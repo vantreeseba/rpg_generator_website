@@ -12,6 +12,16 @@ export const metadata: Metadata = {
 
 const sections = [
   {
+    title: '',
+    links: [
+      {
+        label: 'Home',
+        path: '/',
+      },
+    ],
+  },
+
+  {
     title: 'Generators',
     links: [
       {
@@ -19,8 +29,8 @@ const sections = [
         path: '/npc',
       },
       {
-        label: 'diety',
-        path: '/diety',
+        label: 'deity',
+        path: '/deity',
       },
     ],
   },

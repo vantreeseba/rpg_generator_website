@@ -2,6 +2,7 @@
 
 import { Button } from './ui/button';
 import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
 
 interface SidebarProps {
   sections: Array<SidebarSectionProps>;
@@ -14,7 +15,7 @@ interface SidebarSectionProps {
 
 export default function Sidebar({ sections }: SidebarProps) {
   return (
-    <aside style={{ height: '100%', display: 'inline-block' }}>
+    <aside style={{ height: '100%', display: 'inline-block' }} className="pl-4">
       {sections.map((x) => (
         <SidebarSection key={`sidebar_section_${x.title}`} {...x} />
       ))}
@@ -23,13 +24,22 @@ export default function Sidebar({ sections }: SidebarProps) {
 }
 
 function SidebarSection({ title, links = [] }: SidebarSectionProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const buttons = links.map((link) => {
+    const isCurrent = link.path == pathname;
     return (
-      <Link href={link.path} key={`link_${link.label}`}>
-        <Button variant="ghost" className="w-full justify-start">
-          {link.label}
-        </Button>
-      </Link>
+      <Button
+        key={`sidebar_section_link_${link.path}`}
+        variant={isCurrent ? 'outline' : 'ghost'}
+        className="w-full justify-start"
+        onClick={() => {
+          isCurrent ? router.refresh() : router.replace(link.path);
+        }}
+      >
+        {link.label}
+      </Button>
     );
   });
 

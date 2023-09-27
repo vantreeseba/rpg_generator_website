@@ -17,9 +17,6 @@ export default function Tavern() {
 
   return (
     <div>
-      <Button variant="secondary" onClick={() => router.refresh()}>
-        Regenerate Tavern
-      </Button>
       <div className="grid gap-4 mt-4 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3">
         {taverns.map(toTavernCard)}
       </div>

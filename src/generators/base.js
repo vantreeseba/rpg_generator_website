@@ -119,7 +119,7 @@ gen.mergeGrammar(require('../data/character/traits.json'));
 gen.mergeGrammar(require('../data/character/hair.json'));
 gen.mergeGrammar(require('../data/character/identity.json'));
 
-gen.mergeGrammar(require('../data/diety/aspects.json'));
+gen.mergeGrammar(require('../data/deity/aspects.json'));
 
 gen.mergeGrammar(require('../data/generators/plothooks.json'));
 gen.mergeGrammar(require('../data/generators/npc.json'));
