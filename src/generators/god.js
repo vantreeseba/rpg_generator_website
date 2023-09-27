@@ -54,7 +54,7 @@ storygen.mergeGrammar({
 #[gender_:gender]# 
 #[pronoun_:pronoun]# 
 #[is_:is_verb]# 
-#[name_:generate_name().c]# 
+#[name_:generate_name(true).c]# 
 #[species_:species]#
 #[main_aspect_:aspects]#
     `,
