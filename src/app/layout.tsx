@@ -14,17 +14,21 @@ const sections = [
   {
     title: 'Generators',
     links: [
-      {
-        label: 'home',
-        path: '/',
-      },
-      {
-        label: 'test',
-        path: '/test',
-      },
+      //       {
+      //         label: 'home',
+      //         path: '/',
+      //       },
+      //       {
+      //         label: 'test',
+      //         path: '/test',
+      //       },
       {
         label: 'npc',
         path: '/npc',
+      },
+      {
+        label: 'diety',
+        path: '/diety',
       },
     ],
   },
