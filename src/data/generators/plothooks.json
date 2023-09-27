@@ -1,0 +1,81 @@
+{
+  "threats": [
+    "plague",
+    "dragon",
+    "#species# necromancer",
+    "#species# #raider_types#",
+    "a large number of enraged #animals_wild.pluralize#"
+  ],
+  "raider_types": ["raiders", "bandits", "pirates", "cultists"],
+  "traveler_types": [
+    "carnival",
+    "peddler",
+    "band of #species.pluralize#",
+    "#species# family",
+    "#person#",
+    "stranger",
+    "group of strangers"
+  ],
+  "interesting_things": [
+    "a traveling #traveler_types# visiting",
+    "voices whispering in the #natural_location_type#",
+    "strange riots and murders",
+    "people having strange dreams",
+    "a shipwreck",
+    "a shipwreck, full of strange #materials_metals# coins",
+    "a group of #species.pluralize# that have been dancing non-stop"
+  ],
+  "_gives_rumor": [
+    "gives a rumor about",
+    "tells a story about",
+    "says there are reports of",
+    "has heard of"
+  ],
+  "_rumor_trigger": [
+    "pressed",
+    "bribed",
+    "fed",
+    "drunk",
+    "friendly to",
+    "convinced",
+    "pleased",
+    "intimidated"
+  ],
+  "rumors": [
+    "If #_rumor_trigger#, #_gives_rumor# #interesting_things#.",
+    "#_gives_rumor.capitalize# #interesting_things#.",
+    "If #_rumor_trigger#, #_gives_rumor# #interesting_things#, near the #populated_location_type# of #generate_name().capitalize#.",
+    "#_gives_rumor.capitalize# #interesting_things#, near the #populated_location_type# of #generate_name().capitalize#."
+  ],
+  "person": ["#species.a# #occupations#"],
+  "weird_natural_places": [
+    "corpse strewn #natural_location_type#",
+    "corpse strewn #natural_location_type#, covered with broken #materials_metals# #weapons.pluralize#",
+    "a stampede of #animals_wild.toLowerCase.pluralize# from a nearby #natural_location_type#",
+    "a nearby #natural_location_type# having blood rain"
+  ],
+  "meeting_places": [
+    "passing by",
+    "on the road",
+    "in the inn",
+    "in the pub",
+    "at a crossroads",
+    "near a #populated_location_type#"
+  ],
+  "plothooks": [
+    "#person.capitalize# #meeting_places# tells of #populated_location_type.a# threatened by #threats.a#.\n#rumors#",
+    "#person.capitalize# #meeting_places# tells of #weird_natural_places.a#.\n#rumors#",
+    "The nearest #populated_location_type# gates are shut, and many soldiers are stationed nearby.\n#rumors#",
+    "A strange #materials_metals# #weapons# is lying in the crossroads, should you pick it up?",
+    "A young #species# appears in the party's camp one night, sitting by the fire. \nThey never speak, and cannot be physically touched.\nThey stay for one hour and then vanish, this happens every night for a week.",
+    "A huge blackend circle of scorched earth, in the center is the body of a #species# and they are holding #materials_metals.a# #weapons#.",
+    "A huge blackend circle of scorched earth, in the center is the body of a #species# and they are holding #trinkets.a#.",
+    "In the middle of the path lies #trinkets.a#.",
+    "Reports of a #species# child lost in the nearby area.\nThey say they had gone missing before, and had been found in a local #natural_location_type#, stone cold and refusing to speak.",
+    "Two #species# groups are engaged in murderous warfare on one another.\nOne leader has a cursed #trinket_items# that drives the owner to obsessively eat the flesh of its own species.",
+    "A group of #species.pluralize# suddenly teleports into the area, see the party and yell at them to run while they can.\nThey leave behind a #trinkets#.",
+    "A #traveler_types# #meeting_places# reported a dangerous section of road that passes by the nearby #natural_location_type#.\n#species.capitalize# #raider_types# have taken a bridge and are extorting people.",
+    "A #traveler_types# #meeting_places# warns of a swarm of enraged #animals_wild.toLowerCase.pluralize# that have been attacking people.\nThey say it is the fault of the local ruler #generate_name().titlize# in the nearby #populated_location_type#.\nThe ruler seems completly disinterested in helping.",
+    "A noise grows louder and louder, until #species.a# falls into the ground.\nDid they survive, and where did they come from?"
+  ]
+}

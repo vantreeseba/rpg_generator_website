@@ -1,0 +1,83 @@
+{
+  "foods": [
+    "baked #foods_vegetables#",
+    "steamed #foods_vegetables#",
+    "boiled #foods_vegetables#",
+    "fried #foods_vegetables#",
+    "#foods_vegetables# #food_types#"
+  ],
+  "food_types": ["bread", "cheese", "soup", "paste", "sauce"],
+
+  "foods_vegetables": [
+    "#foods_leafy_vegetables#",
+    "#foods_vegetable_fruits#",
+    "#foods_pod_vegetables#",
+    "#foods_bulb_vegetables#",
+    "#foods_root_vegetables#"
+  ],
+
+  "foods_leafy_vegetables": [
+    "arugula",
+    "broccoli",
+    "cabbage",
+    "celery",
+    "collard greens",
+    "cress",
+    "dill",
+    "endive",
+    "kale",
+    "lettuce",
+    "spinach",
+    "sorrel",
+    "chard"
+  ],
+  "foods_vegetable_fruits": [
+    "bitter melon",
+    "durian",
+    "squash",
+    "chayote",
+    "cucumber",
+    "pumpkin",
+    "tomato",
+    "zucchini"
+  ],
+  "foods_pod_vegetables": [
+    "groundnut",
+    "bean",
+    "chickpea",
+    "green bean",
+    "lentil",
+    "mung bean",
+    "okra",
+    "pea",
+    "peanut",
+    "snap pea",
+    "snow pea"
+  ],
+  "foods_bulb_vegetables": [
+    "asparagus",
+    "celeriac",
+    "garlic",
+    "onion",
+    "celery",
+    "shallot",
+    "leek",
+    "lotus root"
+  ],
+  "foods_root_vegetables": [
+    "beetroot",
+    "burdock",
+    "carrot",
+    "cassava",
+    "artichoke",
+    "ginger",
+    "taro",
+    "horseradish",
+    "parsnip",
+    "arrowroot",
+    "potato",
+    "turnip",
+    "yam",
+    "ube"
+  ]
+}

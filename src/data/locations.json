@@ -1,0 +1,46 @@
+{
+  "populated_location_type": [
+    "abbey",
+    "castle",
+    "church",
+    "citadel",
+    "city",
+    "hamlet",
+    "keep",
+    "monastary",
+    "village",
+    "capital",
+    "town",
+    "township",
+    "borough",
+    "crossroads",
+    "port",
+    "territory",
+    "region"
+  ],
+  "other": ["lair", "caves"],
+  "natural_location_type": [
+    "lands",
+    "forest",
+    "mountain",
+    "ocean",
+    "river",
+    "valley",
+    "woods",
+    "plains",
+    "swamp",
+    "harbor",
+    "bay",
+    "coast"
+  ],
+  "location_type": ["#populated_location_type#", "#natural_location_type#"],
+  "named_populated_location": [
+    "#populated_location_type.capitalize# of #generate_name().capitalize#",
+    "#generate_name().capitalize# #populated_location_type.capitalize#"
+  ],
+  "named_natural_location": [
+    "#natural_location_type.capitalize# of #generate_name().capitalize#",
+    "#generate_name().capitalize# #natural_location_type.capitalize#"
+  ],
+  "named_location": ["#named_natural_location#", "#named_populated_location#"]
+}

@@ -1,0 +1,84 @@
+{
+  "clothing_hat": ["#combine(colors, clothing_materials)# #clothing_hat_types#"],
+  "clothing_outer": ["#combine(colors, clothing_materials)# #clothing_outer_types#"],
+  "clothing_top": [
+    "#combine(colors,clothing_materials,clothing_top_modifiers)# #clothing_top_types#"
+  ],
+  "clothing_bottom": [
+    "#combine(colors, clothing_bottom_modifiers, clothing_materials)# #clothing_bottom_types#"
+  ],
+  "clothing_shoe": ["#combine(colors, clothing_materials)# #clothing_shoe_types.pluralize#"],
+  "clothing_materials": [
+    "leather",
+    "wool",
+    "knitted",
+    "woven",
+    "cloth",
+    "silk",
+    "bone",
+    "shell",
+    "beaded"
+  ],
+  "clothing_hat_types": [
+    "ascot cap",
+    "balaclava",
+    "beret",
+    "bicorne",
+    "tricorne",
+    "boater",
+    "bowler",
+    "capotain",
+    "cloche hat",
+    "conical hat",
+    "turban",
+    "fez",
+    "flat cap",
+    "gat",
+    "hennin hat",
+    "kalpak",
+    "kippah",
+    "kolpik",
+    "kufi",
+    "peach basket hat",
+    "cap",
+    "sombrero",
+    "top hat",
+    "touque",
+    "ushanka"
+  ],
+  "clothing_outer_types": [
+    "coat",
+    "jacket",
+    "cloak",
+    "tabard",
+    "blazer",
+    "apron",
+    "duster",
+    "cape",
+    "robe",
+    "cardigan",
+    "poncho"
+  ],
+  "clothing_top_types": [
+    "short sleeved shirt",
+    "long sleeved shirt",
+    "sleeveless shirt",
+    "camisole",
+    "vest",
+    "tunic",
+    "wrap",
+    "sweater"
+  ],
+  "clothing_top_modifiers": ["v-neck", "turtle-neck", "plain", "collared", "peplumed", "button up"],
+  "clothing_bottom_types": [
+    "skirt",
+    "dress",
+    "trousers",
+    "pants",
+    "pantaloons",
+    "breeches",
+    "tights"
+  ],
+  "clothing_bottom_modifiers": ["pleated", "plain", "laced", "buttoned"],
+  "clothing_shoe_types": ["sandal", "boot", "shoe"]
+}

@@ -1,0 +1,111 @@
+{
+  "colors": ["#all_colors#"],
+  "basic_colors": [
+    "#primary_colors#",
+    "#secondary_colors#",
+    "#color_modifiers#-#primary_colors#",
+    "#color_modifiers#-#secondary_colors#",
+    "#color_modifiers#-#other_colors#",
+    "#black_white#"
+  ],
+  "simple_colors": ["#primary_colors#", "#secondary_colors#", "#black_white#"],
+  "black_white": ["black", "white"],
+  "primary_colors": ["blue", "red", "yellow"],
+  "secondary_colors": ["green", "orange", "purple"],
+  "other_colors": ["brown", "gray"],
+
+  "color_modifiers": ["light", "dark", "medium"],
+
+  "all_colors": [
+    "#colors_whites#",
+    "#colors_blacks#",
+    "#colors_blues#",
+    "#colors_reds#",
+    "#colors_yellows#",
+    "#colors_greens#",
+    "#colors_oranges#",
+    "#colors_purples#",
+    "#colors_browns#",
+    "#colors_grays#",
+
+    "#color_modifiers#-#colors_whites#",
+    "#color_modifiers#-#colors_blacks#",
+    "#color_modifiers#-#colors_blues#",
+    "#color_modifiers#-#colors_reds#",
+    "#color_modifiers#-#colors_yellows#",
+    "#color_modifiers#-#colors_greens#",
+    "#color_modifiers#-#colors_oranges#",
+    "#color_modifiers#-#colors_purples#",
+    "#color_modifiers#-#colors_browns#",
+    "#color_modifiers#-#colors_grays#"
+  ],
+
+  "colors_whites": [
+    "white",
+    "pearl-white",
+    "alabaster-white",
+    "snow-white",
+    "ivory-white",
+    "cream-white",
+    "powder-white",
+    "frost-white",
+    "porcelain-white",
+    "off-white"
+  ],
+  "colors_grays": ["gray", "silver-gray", "dim-gray", "slate-gray"],
+  "colors_blacks": ["black"],
+  "colors_blues": [
+    "blue",
+    "aqua",
+    "cyan",
+    "turqouise",
+    "steel-blue",
+    "powder-blue",
+    "sky-blue",
+    "sea-blue",
+    "navy-blue",
+    "cerulean"
+  ],
+  "colors_reds": ["red", "coral-red", "salmon-red", "crimson-red", "brick-red"],
+  "colors_yellows": [
+    "yellow",
+    "golden-yellow",
+    "peachy-yellow",
+    "lemon-yellow",
+    "ochre"
+  ],
+  "colors_greens": [
+    "green",
+    "chartreuse",
+    "yellow-green",
+    "spring-green",
+    "lime-green",
+    "sea-green",
+    "forest-green",
+    "olive-green",
+    "aquamarine"
+  ],
+  "colors_oranges": ["orange", "salmon-orange", "coral-orange", "red-orange"],
+  "colors_purples": [
+    "purple",
+    "lavender",
+    "thistle",
+    "plum",
+    "violet",
+    "fuchsia",
+    "magenta",
+    "blue-violet",
+    "indigo"
+  ],
+  "colors_browns": [
+    "brown",
+    "tan",
+    "wheat-tan",
+    "sienna",
+    "beige-tan",
+    "oat-tan",
+    "sandy-tan",
+    "sandy-brown",
+    "sepia"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "materials": [
+    "#materials_metals#",
+
+    "ivory",
+    "stone",
+    "glass",
+    "leather",
+    "ceramic",
+    "#generate_name()# leather",
+    "bone",
+    "#generate_name()# bone",
+    "shell",
+    "#generate_name()# shell",
+    "wooden",
+    "#generate_name()# wood"
+  ],
+  "materials_gemstones": [
+    "diamond",
+    "ruby",
+    "emerald",
+    "topaz",
+    "amethyst",
+    "peridot",
+    "opal",
+    "quartz",
+    "sapphire"
+  ],
+  "materials_metals": [
+    "platinum",
+    "gold",
+    "silver",
+    "electrum",
+    "bronze",
+    "brass",
+    "tin",
+    "copper",
+    "iron",
+    "steel",
+    "pewter",
+    "lead",
+    "zinc"
+  ],
+  "materials_woods": ["oak", "maple", "pine"]
+}

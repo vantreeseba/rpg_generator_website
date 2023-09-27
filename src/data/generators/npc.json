@@ -1,0 +1,11 @@
+{
+  "hair_desc": ["#hair-style# #human-hair-color# hair"],
+  "eyes_desc": ["#colors# eyes"],
+  "_gs": ["#weighted_gender.a# #species#"],
+  "_gss": ["#weighted_gender.a# #species_#"],
+  "npc_name": ["#generate_name().capitalize#"],
+  "npc_simple": ["#npc_name# #is_was# #_gs# with #hair_desc# and #eyes_desc#."],
+  "npc_same_species": [
+    "#npc_name# #is_was# #_gss# with #hair-style# #human-hair-colors# hair and #colors# eyes."
+  ]
+}

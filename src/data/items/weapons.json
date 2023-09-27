@@ -1,0 +1,77 @@
+{
+  "weapons": ["#metal_weapons#", "#wooden_weapons#"],
+  "metal_weapons": [
+    "sickle",
+    "scythe",
+    "#fist_weapons#",
+    "#axe_weapons#",
+    "#sword_weapons#",
+    "#hammer_weapons#",
+    "#polearm_weapons#",
+    "#thrown_weapons#"
+  ],
+  "fist_weapons": ["claws", "knuckles", "cestus", "katar", "pata", "chain"],
+  "axe_weapons": [
+    "axe",
+    "battle axe",
+    "hand-axe",
+    "hatchet",
+    "great axe",
+    "adze",
+    "broad axe"
+  ],
+  "sword_weapons": [
+    "rapier",
+    "dagger",
+    "scimitar",
+    "long sword",
+    "short sword",
+    "great sword",
+    "bastard sword",
+    "cutlass",
+    "sabre",
+    "broadsword",
+    "talwar",
+    "kopesh",
+    "epee",
+    "estoc"
+  ],
+  "hammer_weapons": [
+    "flail",
+    "hammer",
+    "war-hammer",
+    "mace",
+    "maul",
+    "pick",
+    "morningstar"
+  ],
+  "polearm_weapons": [
+    "glaive",
+    "bardiche",
+    "poleaxe",
+    "halbard",
+    "spear",
+    "trident",
+    "pike"
+  ],
+  "thrown_weapons": [
+    "spear",
+    "javalin",
+    "dart",
+    "hand-axe",
+    "throwing disc",
+    "dagger",
+    "throwing star"
+  ],
+  "wooden_weapons": [
+    "crossbow",
+    "recurve bow",
+    "arbalest",
+    "shortbow",
+    "longbow",
+    "staff",
+    "club",
+    "lance",
+    "blowgun"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "hair-style": [
+    "braided",
+    "curly",
+    "dreadlocked",
+    "frazzled",
+    "greasy",
+    "limp",
+    "long",
+    "messy",
+    "spikey",
+    "pony-tail",
+    "short",
+    "straight",
+    "streaked",
+    "thick",
+    "thinning",
+    "very long",
+    "wavy",
+    "well groomed",
+    "wiry"
+  ],
+  "human-hair-colors": [
+    "blonde",
+    "auburn",
+    "red",
+    "brown",
+    "black",
+    "gray",
+    "white",
+    "salt and pepper"
+  ]
+}

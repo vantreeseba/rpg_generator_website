@@ -1,0 +1,26 @@
+{
+  "body-parts": [
+    "head",
+    "face",
+    "neck",
+    "left eye",
+    "right eye",
+    "nose",
+    "left ear",
+    "right ear",
+    "chest",
+    "back",
+    "left upper arm",
+    "right upper arm",
+    "left forearm",
+    "right forearm",
+    "left hand",
+    "right hand",
+    "left thigh",
+    "right thigh",
+    "left calf",
+    "right calf",
+    "left foot",
+    "right foot"
+  ]
+}
