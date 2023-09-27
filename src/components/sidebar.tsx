@@ -35,7 +35,7 @@ function SidebarSection({ title, links = [] }: SidebarSectionProps) {
 
   return (
     <>
-      <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">{title}</h2>
+      <h2 className="mb-2 mt-4 px-4 text-lg font-semibold tracking-tight">{title}</h2>
       {buttons}
     </>
   );

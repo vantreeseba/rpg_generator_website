@@ -14,14 +14,6 @@ const sections = [
   {
     title: 'Generators',
     links: [
-      //       {
-      //         label: 'home',
-      //         path: '/',
-      //       },
-      //       {
-      //         label: 'test',
-      //         path: '/test',
-      //       },
       {
         label: 'npc',
         path: '/npc',
@@ -29,6 +21,15 @@ const sections = [
       {
         label: 'diety',
         path: '/diety',
+      },
+    ],
+  },
+  {
+    title: 'Business/Place',
+    links: [
+      {
+        label: 'tavern',
+        path: '/tavern',
       },
     ],
   },
