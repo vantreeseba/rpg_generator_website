@@ -6,13 +6,23 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@/components/ui/collapsible';
 
+import { useRouter } from 'next/navigation';
+
 export default function NPC() {
+  const router = useRouter();
   const npcs = [];
   for (var i = 0; i < 4; i++) {
     npcs.push(npc_generator());
   }
 
-  return <div className="grid gap-4 mt-4 grid-cols-2">{npcs.map(toNpcCard)}</div>;
+  return (
+    <div>
+      <Button variant="secondary" onClick={() => router.refresh()}>
+        Regenerate NPCs
+      </Button>
+      <div className="grid gap-4 mt-4 grid-cols-2">{npcs.map(toNpcCard)}</div>
+    </div>
+  );
 }
 
 function toNpcCard(npc: any) {
