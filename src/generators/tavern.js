@@ -75,7 +75,7 @@ storygen.mergeGrammar({
   positive_descriptors_windows: ['welcoming', 'bright', 'open'],
   tavern_memory: [`#[name_:tavern_name]# #[smell_food_:foods]#`],
   tavern_short: [`#name_# is #tavern_type.a#, located in the #named_populated_location#.`],
-  tavern_owner: [`It is owned by #generate_name().c# the #species.c#.`],
+  tavern_owner: [`It is owned by #generate_name(true).c# the #species.c#.`],
   tavern_description: [
     `
 A #random(1,3)# story #wall_types# building topped with a #roof_types# roof.
