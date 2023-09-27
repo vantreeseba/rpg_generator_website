@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 export default function NPC() {
   const router = useRouter();
   const npcs = [];
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < 8; i++) {
     npcs.push(npc_generator());
   }
 
@@ -20,7 +20,9 @@ export default function NPC() {
       <Button variant="secondary" onClick={() => router.refresh()}>
         Regenerate NPCs
       </Button>
-      <div className="grid gap-4 mt-4 grid-cols-2">{npcs.map(toNpcCard)}</div>
+      <div className="grid gap-4 mt-4 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3">
+        {npcs.map(toNpcCard)}
+      </div>
     </div>
   );
 }
