@@ -1,0 +1,40 @@
+{
+  "symbols": [
+    "star",
+    "mask",
+    "moon",
+    "rose",
+    "tree",
+    "eye",
+    "sun",
+    "hammer",
+    "shield",
+    "feather",
+    "horn",
+    "crescent",
+    "lotus",
+    "flame",
+    "sword",
+    "skull",
+    "knife"
+  ],
+  "symbol_adjectives": [
+    "cracked",
+    "flying",
+    "leaping",
+    "roaring",
+    "frowning",
+    "lonely",
+    "staggering",
+    "prancing",
+    "gilded",
+    "howling",
+    "slaughtered",
+    "leering",
+    "drunken",
+    "wandering",
+    "mysterious",
+    "barking",
+    "gleaming"
+  ]
+}

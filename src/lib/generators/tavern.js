@@ -8,8 +8,6 @@ const { storygen } = require('./base');
 // flaws
 
 storygen.mergeGrammar({
-  //   food_reasons: ["spiciness", "squishy texture", "crunchy texture", "flavor"],
-  //   food_reason: ["because of the #food_reasons#"],
   mug_type: ['tankard', 'mug', 'goblet'],
   beer_types: [
     'bitter',
@@ -69,13 +67,22 @@ storygen.mergeGrammar({
   ],
   back_buildings_attachment: ['standing', 'attached'],
   back_buildings: ['stable', 'mill', 'hot spring', 'brewery'],
-  tavern_name: ['The #simple_colors# #animals#'],
+  tavern_name: [
+    'The #or(symbol_adjectives, simple_colors)# #or(animals, symbols, glass_type, mug_type)#',
+    'The #or(symbol_adjectives, simple_colors)# #or(animals, symbols, glass_type, mug_type)# #type_:tavern_type#',
+    'The #or(animals, species, symbols, glass_type, mug_type)# and the #or(animals, species, symbols, glass_type, mug_type)#',
+    'The #species# song',
+  ],
   roof_types: ['thatched', 'tiled', 'shingled', 'slate', 'copper'],
   wall_types: ['log', 'stone', 'brick', 'wattle and daub', 'stucco', 'timber', 'masonary'],
   positive_descriptors_windows: ['welcoming', 'bright', 'open'],
   tavern_memory: [`#[name_:tavern_name]# #[smell_food_:foods]#`],
-  tavern_short: [`#name_# is #tavern_type.a#, located in the #named_populated_location#.`],
-  tavern_owner: [`It is owned by #generate_name(true).c# the #species.c#.`],
+  tavern_short: [`#name_# is #type_:tavern_type.a#, located in the #location_populated_named#.`],
+  tavern_owner_verb: ['run by', 'owned by', 'cared for by', 'managed by'],
+  tavern_owner: [
+    `It is #tavern_owner_verb# #generate_name(true).c# the #species#.`,
+    `It is #tavern_owner_verb# the #species# #generate_name(true).c#.`,
+  ],
   tavern_description: [
     `
 A #random(1,3)# story #wall_types# building topped with a #roof_types# roof.
@@ -104,6 +111,7 @@ export default function () {
 
   const tavern = {
     ...storygen.memory,
+    name: storygen.run('#name_.t#', seed).trimStart().trimEnd(),
     short: storygen.run('#tavern_short#', seed).trimStart().trimEnd(),
     description: storygen.run('#tavern_description#', seed).trimStart().trimEnd(),
     owner: storygen.run('#tavern_owner#', seed).trimStart().trimEnd(),

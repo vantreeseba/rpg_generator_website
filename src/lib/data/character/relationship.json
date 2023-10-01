@@ -1,0 +1,13 @@
+{
+  "relationship_types": [
+    "single",
+    "attached",
+    "engaged",
+    "living with partner",
+    "married",
+    "divorced",
+    "seperated",
+    "widowed"
+  ],
+  "relationship_modifiers": ["monogomous", "open", "polyamourous"]
+}

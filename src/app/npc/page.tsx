@@ -1,15 +1,9 @@
-'use client';
-
-import npc_generator from '../../generators/npc.js';
-import { Button } from '@/components/ui/button';
+import npc_generator from '../../lib/generators/npc.js';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 
-import { CollapsibleDivider } from '@/components/divider';
-
-import { useRouter } from 'next/navigation';
+import Section from '@/components/section';
 
 export default function NPC() {
-  const router = useRouter();
   const npcs = [];
   for (var i = 0; i < 6; i++) {
     npcs.push(npc_generator());
@@ -25,14 +19,6 @@ export default function NPC() {
 }
 
 function toNpcCard(npc: any) {
-  const clothes = npc.clothes.split('\n').map((x: any) => <li key={x}>{x}</li>);
-  const history = npc.history.split('\n').map((x: any) => <div key={x}>{x}</div>);
-  const parents = npc.parents.split('\n').map((x: any) => <div key={x}>{x}</div>);
-  const siblings = npc.siblings.split('\n').map((x: any) => <div key={x}>{x}</div>);
-  const likes = npc.likes.split('\n').map((x: any) => <div key={x}>{x}</div>);
-  const traits = npc.traits.split('\n').map((x: any) => <div key={x}>{x}</div>);
-  const goals = npc.goals.split('\n').map((x: any) => <div key={x}>{x}</div>);
-
   return (
     <Card>
       <CardHeader>
@@ -40,15 +26,13 @@ function toNpcCard(npc: any) {
         <CardDescription>{npc.short}</CardDescription>
       </CardHeader>
       <CardContent>
-        <CollapsibleDivider label="history">{history}</CollapsibleDivider>
-        <CollapsibleDivider label="parents">{parents}</CollapsibleDivider>
-        {siblings.count > 0 ? (
-          <CollapsibleDivider label="siblings">{siblings}</CollapsibleDivider>
-        ) : null}
-        <CollapsibleDivider label="likes">{likes}</CollapsibleDivider>
-        <CollapsibleDivider label="traits">{traits}</CollapsibleDivider>
-        <CollapsibleDivider label="goals">{goals}</CollapsibleDivider>
-        <CollapsibleDivider label="clothes">{clothes}</CollapsibleDivider>
+        <Section entity={npc} section="clothes" />
+        <Section entity={npc} section="history" />
+        <Section entity={npc} section="parents" />
+        <Section entity={npc} section="siblings" />
+        <Section entity={npc} section="likes" />
+        <Section entity={npc} section="traits" />
+        <Section entity={npc} section="goals" />
       </CardContent>
     </Card>
   );

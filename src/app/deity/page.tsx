@@ -1,15 +1,9 @@
-'use client';
-
-import deity_generator from '../../generators/god.js';
-import { Button } from '@/components/ui/button';
+import deity_generator from '../../lib/generators/god.js';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 
-import { CollapsibleDivider } from '@/components/divider';
-
-import { useRouter } from 'next/navigation';
+import Section from '@/components/section';
 
 export default function deity() {
-  const router = useRouter();
   let deities = [];
   for (var i = 0; i < 6; i++) {
     deities.push(deity_generator());
@@ -27,11 +21,6 @@ export default function deity() {
 }
 
 function todeityCard(deity: any) {
-  const appearance = deity.appearance.split('\n').map((x: any) => <div key={x}>{x}</div>);
-  const planar_home = deity.planar_home.split('\n').map((x: any) => <div key={x}>{x}</div>);
-  const followers = deity.followers.split('\n').map((x: any) => <div key={x}>{x}</div>);
-  const worshippers = deity.worshippers.split('\n').map((x: any) => <div key={x}>{x}</div>);
-
   return (
     <Card key={`deity_${deity.name_}`}>
       <CardHeader>
@@ -39,10 +28,10 @@ function todeityCard(deity: any) {
         <CardDescription>{deity.short}</CardDescription>
       </CardHeader>
       <CardContent>
-        <CollapsibleDivider label="Appearance">{appearance}</CollapsibleDivider>
-        <CollapsibleDivider label="Planar Home">{planar_home}</CollapsibleDivider>
-        <CollapsibleDivider label="Followers">{followers}</CollapsibleDivider>
-        <CollapsibleDivider label="Worshippers">{worshippers}</CollapsibleDivider>
+        <Section entity={deity} section="appearance" />
+        <Section entity={deity} section="planar_home" />
+        <Section entity={deity} section="followers" />
+        <Section entity={deity} section="worshippers" />
       </CardContent>
     </Card>
   );

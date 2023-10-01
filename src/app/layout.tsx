@@ -25,6 +25,10 @@ const sections = [
     title: 'Generators',
     links: [
       {
+        label: 'character',
+        path: '/character',
+      },
+      {
         label: 'npc',
         path: '/npc',
       },
@@ -32,11 +36,19 @@ const sections = [
         label: 'deity',
         path: '/deity',
       },
+      {
+        label: 'quest',
+        path: '/quest',
+      },
     ],
   },
   {
     title: 'Business/Place',
     links: [
+      {
+        label: 'locality',
+        path: '/locality',
+      },
       {
         label: 'tavern',
         path: '/tavern',

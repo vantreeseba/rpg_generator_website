@@ -14,7 +14,7 @@ storygen.mergeGrammar({
   they: ['they'],
   is: ['is'],
   are: ['are'],
-  pronoun: ['#switch(_gender_, male=>he, female=>she, _=>they)#'],
+  pronoun: ['#switch(gender_, male=>he, female=>she, _=>they)#'],
   is_verb: ['#switch(pronoun_, he=>is, she=>is, they=>are)#'],
   food_reasons: ['spiciness', 'squishy texture', 'crunchy texture', 'flavor'],
   food_reason: ['because of the #food_reasons#'],
@@ -42,8 +42,8 @@ storygen.mergeGrammar({
   ],
   npc_history: [
     `
-Born in the #named_location#.
-#pronoun_.capitalize# #is_# now living in the #populated_location_type# of #generate_name().capitalize#.
+Born in the #location_named#.
+#pronoun_.capitalize# #is_# now living in the #location_type_populated# of #generate_name().capitalize#.
 #pronoun_.capitalize# #is_# #random(18, 60)# years old.
 #pronoun_.capitalize# used to be #occupations.a.toLowerCase# and now #is_# making a living as #occupations.a.toLowerCase#.
     `,
@@ -60,13 +60,13 @@ Born in the #named_location#.
   ],
   npc_traits: [
     `
-#pronoun_.capitalize# #characteristics.toLowerCase#.
-#pronoun_.capitalize# #characteristics.toLowerCase#.
-#pronoun_.capitalize# #characteristics.toLowerCase#.
+#pronoun_.capitalize# #characteristics#.
+#pronoun_.capitalize# #characteristics#.
+#pronoun_.capitalize# #characteristics#.
 
-Typically #pronoun_# #is_# #personality.toLowerCase#, sometimes #pronoun_# #is_# #personality.toLowerCase#.
-Often #pronoun_# #is_# #personality.toLowerCase# towards children.
-Also #pronoun_# #is_# #personality.toLowerCase# towards #occupations.pluralize#.
+Typically #pronoun_# #is_# #personality#, sometimes #pronoun_# #is_# #personality.toLowerCase#.
+Often #pronoun_# #is_# #personality# towards children.
+Also #pronoun_# #is_# #personality# towards #occupations.pluralize#.
     `,
   ],
 
@@ -85,8 +85,15 @@ Clothes: #npc_clothes#
   ],
 });
 
-export default function () {
-  const seed = Math.floor(Math.random() * 100000);
+export default function (memory, seed) {
+  seed = seed || Math.floor(Math.random() * 100000);
+  storygen.memory = {};
+
+  for (let key in memory) {
+    let memoryKey = key + '_';
+    storygen.memory[memoryKey] = memory[key];
+  }
+
   storygen.run('#npc_memory#', seed);
 
   const npc = {

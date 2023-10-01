@@ -7,7 +7,7 @@ Functions.set('generate_name', (generator, args) => {
   if (args[0] == 'true') {
     lang = new Language(null, generator.getSeed());
   }
-  return lang.createWord(null, 1);
+  return lang.createWord(null, 2, 4);
 });
 
 Functions.set('generate_phrase', (generator, args) => {
@@ -17,6 +17,37 @@ Functions.set('generate_phrase', (generator, args) => {
   return lang.createPhrase();
 });
 
+Functions.set('pick', (generator, args) => {
+  let [key, count] = args;
+  let results = [];
+  let possible = [...generator.grammars[key]];
+
+  let c = parseInt(count) || 1;
+
+  for (let i = 0; i < c; i++) {
+    if (possible.length == 0) {
+      break;
+    }
+    let index = Math.floor(Math.random() * possible.length);
+    results.push(possible.splice(index, 1)[0]);
+  }
+
+  return results.join(' ');
+});
+
+Functions.set('or', (generator, args) => {
+  let c = generator.random.choice(args);
+  return generator.run(`#${c}#`, generator.getSeed());
+});
+
+/**
+ * Generates a "combination" of all given grammars, for example:
+ * [1,2,3], [a,b,c] => [1,2,3,1a,1b,1c,2a.....,a,b,c].
+ *
+ * @param {Generator} generator
+ * @param {Array<string>} args - The list of grammar symbols to combine.
+ * @returns A choice from the combined grammars.
+ */
 Functions.set('combine', (generator, args) => {
   let results = [];
   var temp = [];
@@ -35,8 +66,8 @@ Functions.set('combine', (generator, args) => {
   }
 
   results = results.map((x) => x.map((y) => `#${y}#`).join(' '));
-  let c = results[Math.trunc(Math.random() * results.length)];
-  return generator.run(c);
+  let c = generator.random.choice(results);
+  return generator.run(c, generator.getSeed());
 });
 
 Functions.set('permute', (generator, args) => {
@@ -62,10 +93,17 @@ Functions.set('permute', (generator, args) => {
     combos = combos.concat(per);
   }
 
-  let c = combos[Math.trunc(Math.random() * combos.length)];
-  return generator.run(c);
+  let c = generator.random.choice(combos);
+  return generator.run(c, generator.getSeed());
 });
 
+Transforms.set('titlize', (string) => {
+  return string
+    .split(' ')
+    .map((x) => x.at(0)?.toUpperCase() + x.substring(1))
+    .join(' ');
+});
+Transforms.set('t', Transforms.get('titlize'));
 Transforms.set('c', Transforms.get('capitalize'));
 Transforms.set('s', Transforms.get('pluralize'));
 Transforms.set('trim', (string) => {
@@ -105,6 +143,7 @@ gen.mergeGrammar(require('../data/animals.json'));
 gen.mergeGrammar(require('../data/foods.json'));
 gen.mergeGrammar(require('../data/occupations.json'));
 gen.mergeGrammar(require('../data/locations.json'));
+gen.mergeGrammar(require('../data/symbols.json'));
 
 gen.mergeGrammar(require('../data/items/clothing.json'));
 gen.mergeGrammar(require('../data/items/trinkets.json'));
@@ -123,6 +162,24 @@ gen.mergeGrammar(require('../data/deity/aspects.json'));
 
 gen.mergeGrammar(require('../data/generators/plothooks.json'));
 gen.mergeGrammar(require('../data/generators/npc.json'));
+
+// let window = this || null;
+// console.log('what', window);
+// if (window) {
+//   window.localStorage.setItem(
+//     'dropecho_generator_overrides',
+//     JSON.stringify({
+//       species: ['brad'],
+//     }),
+//   );
+//
+//   try {
+//     var json = window.localStorage.getItem('dropecho_generator_overrides');
+//     gen.mergeGrammar(JSON.parse(json));
+//   } catch (err) {
+//     console.log('no or invalid grammar found in local storage');
+//   }
+// }
 
 module.exports = {
   storygen: gen,

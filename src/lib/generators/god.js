@@ -43,9 +43,12 @@ storygen.mergeGrammar({
   ],
   plane_location: [
     'plane of #generate_name().c#',
-    'the #simple_colors# #natural_location_type#',
+    '#simple_colors# #location_type_natural#',
     '#count# layer of #generate_name().c#, the realm of #main_aspect_#',
-    '#count# layer of #generate_name().c#, the #simple_colors# #natural_location_type#',
+    '#count# layer of #generate_name().c#, the #simple_colors# #location_type_natural#',
+    'plane of #generate_name().c#, the #simple_colors# #location_type_natural#',
+    'plane of #generate_name().c#, the realm of #main_aspect_#',
+    'plane of #generate_name().c#, the #location_type_natural# of #main_aspect_#',
   ],
   count: ['first', 'second', 'third', 'fourth'],
   deity_type: ['deity', 'ruler', 'spirit'],
@@ -63,14 +66,14 @@ storygen.mergeGrammar({
   deity_appearance: [
     `They appear as #gender_.a# #species_# with #hair-style# #colors# hair and #colors# eyes.`,
   ],
-  deity_planar_home: [`Their divine home, the #named_location#, is on the #plane_location#.`],
+  deity_planar_home: [`Their divine home, the #location_named#, is on the #plane_location#.`],
   deity_followers: [`Their most dedicated followers are the "#order_name.titlize#".`],
   deity_worshippers: [`They are often worshipped by #occupations.s# and #occupations.s#.`],
   deity: [
     `
 They appear as #gender_.a# #species_# with #hair-style# #colors# hair and #colors# eyes.
 
-Their divine home, the #named_location#, is on the #plane_location#.
+Their divine home, the #location_named#, is on the #plane_location#.
 Their most dedicated followers are the "#order_name.titlize#".
 
 They are often worshipped by #occupations.s# and #occupations.s#.

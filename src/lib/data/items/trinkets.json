@@ -1,26 +1,26 @@
 {
   "trinkets": [
-    "#_base#.\n#_also#",
-    "#_base#.\n#_also#.\n#_found#",
-    "#_base#.\n#_found#",
-    "#_base#.\n#_also#.\n#_also#",
-    "#_base#.\n#_when#",
-    "#_base#.\n#_when#.\n#_found#",
-    "#_base#.\n#_when#.\n#_also#",
-    "#_base#.\n#_when#.\n#_also#.\n#_found#"
+    "#_trinket_base#.\n#_trinket_also#",
+    "#_trinket_base#.\n#_trinket_also#.\n#_trinket_found#",
+    "#_trinket_base#.\n#_trinket_found#",
+    "#_trinket_base#.\n#_trinket_also#.\n#_trinket_also#",
+    "#_trinket_base#.\n#_trinket_when#",
+    "#_trinket_base#.\n#_trinket_when#.\n#_trinket_found#",
+    "#_trinket_base#.\n#_trinket_when#.\n#_trinket_also#",
+    "#_trinket_base#.\n#_trinket_when#.\n#_trinket_also#.\n#_trinket_found#"
   ],
-  "_base": [
+  "_trinket_base": [
     "#trinket_items_with_descriptors# that #trinket_actions#",
     "#trinket_items_with_descriptors#"
   ],
-  "_when": ["#description_modifiers.capitalize#, #trinket_actions#"],
-  "_also": ["The #M_trinket_item# #trinket_actions#"],
-  "_found": [
-    "The #M_trinket_item# was #_found_words# in the #named_location#",
-    "The #M_trinket_item# was #_found_words# by #generate_name().capitalize#",
-    "The #M_trinket_item# was #_found_words# by #generate_name().capitalize# in the #named_location#"
+  "_trinket_when": ["#description_modifiers.capitalize#, it #trinket_actions#"],
+  "_trinket_also": ["The #M_trinket_item# #trinket_actions#"],
+  "_trinket_found": [
+    "The #M_trinket_item# was #_trinket_found_words# in the #location_named#",
+    "The #M_trinket_item# was #_trinket_found_words# by #generate_name().capitalize#",
+    "The #M_trinket_item# was #_trinket_found_words# by #generate_name().capitalize# in the #location_named#"
   ],
-  "_found_words": [
+  "_trinket_found_words": [
     "found",
     "discovered",
     "lost",
@@ -31,21 +31,13 @@
   ],
   "trinket_items_with_descriptors": [
     "#M_trinket_item:trinket_items#",
-    "#colors# #M_trinket_item:trinket_items#",
-    "#materials# #M_trinket_item:trinket_items#",
-    "#adjectives# #M_trinket_item:trinket_items#",
-    "#adjectives# #colors# #M_trinket_item:trinket_items#",
-    "#adjectives# #materials# #M_trinket_item:trinket_items#"
+    "#M_trinket_color:colors# #M_trinket_item:trinket_items#",
+    "#M_trinket_material:materials# #M_trinket_item:trinket_items#",
+    "#trinket_adjectives# #M_trinket_item:trinket_items#",
+    "#trinket_adjectives# #M_trinket_color:colors# #M_trinket_item:trinket_items#",
+    "#trinket_adjectives# #M_trinket_material:materials# #M_trinket_item:trinket_items#"
   ],
-  "adjectives": [
-    "tiny",
-    "small",
-    "large",
-    "big",
-    "rounded",
-    "angular",
-    "unusually sharp"
-  ],
+  "trinket_adjectives": ["tiny", "small", "large", "big", "rounded", "angular", "unusually sharp"],
   "description_modifiers": [
     "unknown to the owner",
     "during the full moon",
@@ -71,16 +63,11 @@
     "in proximity to #proximity_items#",
     "in it's owner's home",
     "in the home of #species.a#",
-    "near the #named_location#",
+    "near the #location_named#",
     "touching #species.a#",
     "touching #proximity_items#"
   ],
-  "presence_of_items": [
-    "#trinket_items.a#",
-    "#species.a#",
-    "a secret passage",
-    "a trap"
-  ],
+  "presence_of_items": ["#trinket_items.a#", "#species.a#", "a secret passage", "a trap"],
   "proximity_items": ["water", "#materials#"],
   "languages": [
     "elven",
@@ -106,7 +93,7 @@
     "starts shaking when #action_locations#",
     "emits #smells.a# scent",
     "emits #smells.a# scent when #action_locations#",
-    "#trinket_contains# directions to an abandoned #species# #populated_location_type#",
+    "#trinket_contains# directions to an abandoned #species# #location_type_populated#",
     "has the words #trinket_words# carved into it",
     "is covered in #colors# stains",
     "drips a sticky #colors# fluid",
@@ -143,16 +130,7 @@
     "#trinket_contains# a tiny portrait of #trinkets_image_person.a# wearing the clothes of #occupations.a#"
   ],
   "trinket_contains": ["contains", "holds", "carries"],
-  "smells": [
-    "terrible",
-    "floral",
-    "fruity",
-    "sweet",
-    "pungent",
-    "citrus",
-    "nostalgic",
-    "bitter"
-  ],
+  "smells": ["terrible", "floral", "fruity", "sweet", "pungent", "citrus", "nostalgic", "bitter"],
   "hold_feelings": [
     "swear they have seen it before",
     "feel like they owned it once",
@@ -176,14 +154,7 @@
     "fall in love with",
     "want to kill"
   ],
-  "message_adj": [
-    "encrypted",
-    "cryptic",
-    "mysterious",
-    "uplifting",
-    "spiritual",
-    "warning"
-  ],
+  "message_adj": ["encrypted", "cryptic", "mysterious", "uplifting", "spiritual", "warning"],
   "desc": [
     "heavier",
     "lighter",
@@ -250,17 +221,17 @@
     "jar holding a preserved finger of #species.a#",
     "jar holding a preserved toe of #species.a#",
     "jar holding a preserved heart of #species.a#",
-    "mirror showing the inside of #populated_location_type# of #species.a#",
+    "mirror showing the inside of #location_type_populated# of #species.a#",
     "mirror showing the desires of the looker",
     "mirror showing the indistinguishable face of #species.a#"
   ],
   "trinkets_image_person": [
     "#species#",
     "#species# wearing the clothes of #occupations.a#",
-    "#species_adjectives# #species#"
+    "#trinket_adjectives_species# #species#"
   ],
   "trinkets_instruments": ["lute", "flute", "trumpet", "drum"],
-  "species_adjectives": [
+  "trinket_adjectives_species": [
     "headless",
     "royal looking",
     "haggard",

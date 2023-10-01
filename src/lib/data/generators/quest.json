@@ -1,0 +1,47 @@
+{
+  "quest": [
+    "You have been asked to #quest_tasks#.",
+    "Your mission is to #quest_tasks#.",
+    "A quest awaits you: #quest_tasks#.",
+    "In your journey, you must #quest_tasks#."
+  ],
+  "quest_title": [
+    "You have been asked to:",
+    "Your mission is to:",
+    "A quest awaits you:",
+    "In your journey, you must:"
+  ],
+  "quest_tasks": ["retrieve the #M_quest_items:quest_items# from the #quest_locations#"],
+  "_tasks": [
+    "defeat the #M_quest_enemies:# in the #quest_locations#",
+    "escort #quest_npcs# to the #quest_locations#",
+    "solve the mystery of the #quest_locations#",
+    "find the lost #quest_items# in the #quest_locations#",
+    "rescue #quest_npcs# from the #quest_enemies# in the #quest_locations#",
+    "deliver a message to #quest_npcs# in the #quest_locations#",
+    "gather #quest_quantities# #quest_items# in the #quest_locations#",
+    "protect the #quest_locations# from the #quest_enemies#"
+  ],
+  "quest_items": ["#trinket_items_with_descriptors#"],
+  "_quest_items": ["#trinket_items_with_descriptors#", "#materials_metals# #weapons#"],
+  "quest_locations": ["#location_named#"],
+  "quest_enemies": [
+    "ferocious dragons",
+    "evil sorcerers",
+    "giant spiders",
+    "undead hordes",
+    "wicked witches",
+    "rogue bandits",
+    "vicious werewolves"
+  ],
+  "quest_npcs": [
+    "princesses",
+    "lost travelers",
+    "wise wizards",
+    "captured knights",
+    "lonely hermits",
+    "enchanted creatures",
+    "mysterious strangers"
+  ],
+  "quest_quantities": ["#random(1,50)#"]
+}
