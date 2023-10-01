@@ -37,6 +37,10 @@ const sections = [
         path: '/deity',
       },
       {
+        label: 'trinket',
+        path: '/trinket',
+      },
+      {
         label: 'quest',
         path: '/quest',
       },
