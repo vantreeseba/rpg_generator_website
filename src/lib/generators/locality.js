@@ -56,17 +56,15 @@ storygen.mergeGrammar({
   locality_worker_count: ['many', 'a large number of', 'small groups of', 'some', 'few'],
   locality_worker_types: [
     '#locality_worker_count.c# people here are #occupations.s#.',
-    '#locality_worker_count.c# #species.s# here are #occupations.s#.'
+    '#locality_worker_count.c# #species.s# here are #occupations.s#.',
   ],
   locality_workers: ['#repeatDelim(locality_worker_types, 1, 5, n)#'],
 
-  locality_points_of_interest: [
-    ''
-  ],
+  locality_points_of_interest: [''],
 });
 
-export default function () {
-  const seed = Math.floor(Math.random() * 100000).toString();
+export default function (seed) {
+  seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
   storygen.run('#locality_memory#', seed);
 
   const locality = {

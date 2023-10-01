@@ -105,8 +105,8 @@ Serving of #foods#
   tavern_rumors: [`#repeatDelim(rumors,2,3,n)#`],
 });
 
-export default function () {
-  const seed = Math.floor(Math.random() * 100000);
+export default function (seed) {
+  seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
   storygen.run('#tavern_memory#', seed);
 
   const tavern = {

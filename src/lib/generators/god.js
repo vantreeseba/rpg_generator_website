@@ -82,8 +82,8 @@ They are often worshipped by #occupations.s# and #occupations.s#.
 });
 
 // console.log(storygen.run('#deity#').trimStart());
-export default function () {
-  const seed = Math.floor(Math.random() * 100000);
+export default function (seed) {
+  seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
   storygen.run('#deity_memory#', seed);
 
   const deity = {

@@ -22,8 +22,8 @@ storygen.mergeGrammar({
   ],
 });
 
-export default function GenerateQuest() {
-  const seed = Math.floor(Math.random() * 100000).toString();
+export default function GenerateQuest(seed) {
+  seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
 
   const hook = storygen.run('#plot_hooks#', seed);
   storygen.memory = {};

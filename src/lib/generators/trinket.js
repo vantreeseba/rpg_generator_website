@@ -2,8 +2,8 @@ const { storygen } = require('./base');
 
 storygen.mergeGrammar({});
 
-export default function GenerateTrinket() {
-  const seed = Math.floor(Math.random() * 100000).toString();
+export default function GenerateTrinket(seed) {
+  seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
 
   const short = storygen.run('#trinkets.a.c#', seed);
 
@@ -14,5 +14,3 @@ export default function GenerateTrinket() {
   storygen.memory = {};
   return trinket;
 }
-
-// console.log(storygen.run("#locality#").trimStart());

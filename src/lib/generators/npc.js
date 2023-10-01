@@ -86,7 +86,7 @@ Clothes: #npc_clothes#
 });
 
 export default function (memory, seed) {
-  seed = seed || Math.floor(Math.random() * 100000);
+  seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
   storygen.memory = {};
 
   for (let key in memory) {
