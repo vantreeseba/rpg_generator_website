@@ -19,15 +19,15 @@ export default function Home() {
         <br />
         The second goal is to expose some of the internal values from the generator to allow more
         data driven apps, for example: The character/npc generator will expose data looking like
-        <pre>
-          {`
+      </p>
+      <pre>
+        {`
 {
   "species": 'elf',
   "name": 'ralph',
   "gender": 'agender',
 }`}
-        </pre>
-      </p>
+      </pre>
 
       <h2 className="mt-10 scroll-m-20 pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
         Random Generation Information/Definitions
