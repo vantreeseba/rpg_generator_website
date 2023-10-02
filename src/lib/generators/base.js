@@ -35,7 +35,17 @@ Functions.set('pick', (generator, args) => {
   return results.join(' ');
 });
 
-Functions.set('or', (generator, args) => {
+/**
+ * Outputs a generated phrase from one of the given grammers.
+ * i.e. #choice(test,foo)#
+ * where "test": [1,2], foo:[a,b].
+ * would output either "1", "2", "a", "b".
+ *
+ * @param {Generator} generator
+ * @param {Array<string>} args
+ * @returns A "run" of one of the given symbols/grammars.
+ */
+Functions.set('choice', (generator, args) => {
   let c = generator.random.choice(args);
   return generator.run(`#${c}#`, generator.getSeed());
 });

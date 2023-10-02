@@ -35,9 +35,9 @@ export default function deity() {
   );
 }
 
-function todeityCard(deity: any) {
+function todeityCard(deity: any, index: number) {
   return (
-    <Card key={`deity_${deity.name_}`}>
+    <Card key={`deity_${deity.name_}_${index}`}>
       <CardHeader>
         <CardTitle>{deity.name_}</CardTitle>
         <CardDescription>{deity.short}</CardDescription>

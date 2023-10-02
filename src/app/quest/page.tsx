@@ -34,12 +34,12 @@ export default function deity() {
   );
 }
 
-function toQuestCard(quest: any) {
+function toQuestCard(quest: any, index: number) {
   const title = quest.title.split('\n').map((x: any) => <div key={x}>{x}</div>);
   const short = quest.short.split('\n').map((x: any) => <div key={x}>{x}</div>);
 
   return (
-    <Card key={`quest_{quest.short}`}>
+    <Card key={`quest_${index}`}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{short}</CardDescription>

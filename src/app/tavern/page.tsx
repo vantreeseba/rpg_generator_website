@@ -34,9 +34,9 @@ export default function Tavern() {
   );
 }
 
-function toTavernCard(tavern: any) {
+function toTavernCard(tavern: any, index: number) {
   return (
-    <Card>
+    <Card key={`tavern_${index}`}>
       <CardHeader>
         <CardTitle>{tavern.name}</CardTitle>
         <CardDescription>{tavern.short}</CardDescription>

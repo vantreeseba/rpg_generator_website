@@ -34,12 +34,12 @@ export default function deity() {
   );
 }
 
-function totrinketCard(trinket: any) {
+function totrinketCard(trinket: any, index: number) {
   const title = trinket.title.split('\n').map((x: any) => <div key={x}>{x}</div>);
   const short = trinket.short.split('\n').map((x: any) => <div key={x}>{x}</div>);
 
   return (
-    <Card key={`trinket_{trinket.short}`}>
+    <Card key={`trinket_${index}`}>
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{short}</CardDescription>

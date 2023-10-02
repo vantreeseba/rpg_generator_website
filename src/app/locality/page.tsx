@@ -34,9 +34,9 @@ export default function Locality() {
   );
 }
 
-function toLocalityCard(locality: any) {
+function toLocalityCard(locality: any, index: number) {
   return (
-    <Card>
+    <Card key={index}>
       <CardHeader>
         <CardTitle>{locality.short}</CardTitle>
         <CardDescription>{locality.short}</CardDescription>

@@ -68,9 +68,9 @@ storygen.mergeGrammar({
   back_buildings_attachment: ['standing', 'attached'],
   back_buildings: ['stable', 'mill', 'hot spring', 'brewery'],
   tavern_name: [
-    'The #or(symbol_adjectives, simple_colors)# #or(animals, symbols, glass_type, mug_type)#',
-    'The #or(symbol_adjectives, simple_colors)# #or(animals, symbols, glass_type, mug_type)# #type_:tavern_type#',
-    'The #or(animals, species, symbols, glass_type, mug_type)# and the #or(animals, species, symbols, glass_type, mug_type)#',
+    'The #choice(symbol_adjectives, simple_colors)# #choice(animals, symbols, glass_type, mug_type)#',
+    'The #choice(symbol_adjectives, simple_colors)# #choice(animals, symbols, glass_type, mug_type)# #type_:tavern_type#',
+    'The #choice(animals, species, symbols, glass_type, mug_type)# and the #choice(animals, species, symbols, glass_type, mug_type)#',
     'The #species# song',
   ],
   roof_types: ['thatched', 'tiled', 'shingled', 'slate', 'copper'],
@@ -106,7 +106,7 @@ Serving of #foods#
 });
 
 export default function (seed) {
-  seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
+  seed = seed === undefined ? Math.flochoice(Math.random() * 100000) : seed;
   storygen.run('#tavern_memory#', seed);
 
   const tavern = {

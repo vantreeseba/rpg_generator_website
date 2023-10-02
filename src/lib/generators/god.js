@@ -83,6 +83,7 @@ They are often worshipped by #occupations.s# and #occupations.s#.
 
 // console.log(storygen.run('#deity#').trimStart());
 export default function (seed) {
+  storygen.memory = {};
   seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
   storygen.run('#deity_memory#', seed);
 

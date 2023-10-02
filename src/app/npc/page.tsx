@@ -34,9 +34,9 @@ export default function NPC() {
   );
 }
 
-function toNpcCard(npc: any) {
+function toNpcCard(npc: any, index: number) {
   return (
-    <Card>
+    <Card key={`npc_${index}`}>
       <CardHeader>
         <CardTitle>{npc.name_}</CardTitle>
         <CardDescription>{npc.short}</CardDescription>
