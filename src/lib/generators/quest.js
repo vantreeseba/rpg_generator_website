@@ -23,7 +23,9 @@ storygen.mergeGrammar({
 });
 
 export default function GenerateQuest(seed) {
+  storygen.memory = {};
   seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
+  storygen.run('#generate_name(true)#', seed); //reset the language generator to the current seed.
 
   const hook = storygen.run('#plot_hooks#', seed);
   storygen.memory = {};

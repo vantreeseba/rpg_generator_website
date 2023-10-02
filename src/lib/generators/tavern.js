@@ -106,7 +106,10 @@ Serving of #foods#
 });
 
 export default function (seed) {
+  storygen.memory = {};
   seed = seed === undefined ? Math.flochoice(Math.random() * 100000) : seed;
+  storygen.run('#generate_name(true)#', seed); //reset the language generator to the current seed.
+
   storygen.run('#tavern_memory#', seed);
 
   const tavern = {

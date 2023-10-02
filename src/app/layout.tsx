@@ -26,23 +26,23 @@ const sections = [
     links: [
       {
         label: 'character',
-        path: '/character',
+        path: '/character?seed=0',
       },
       {
         label: 'npc',
-        path: '/npc',
+        path: '/npc?seed=0',
       },
       {
         label: 'deity',
-        path: '/deity',
+        path: '/deity?seed=0',
       },
       {
         label: 'trinket',
-        path: '/trinket',
+        path: '/trinket?seed=0',
       },
       {
         label: 'quest',
-        path: '/quest',
+        path: '/quest?seed=0',
       },
     ],
   },
@@ -51,11 +51,11 @@ const sections = [
     links: [
       {
         label: 'locality',
-        path: '/locality',
+        path: '/locality?seed=0',
       },
       {
         label: 'tavern',
-        path: '/tavern',
+        path: '/tavern?seed=0',
       },
     ],
   },

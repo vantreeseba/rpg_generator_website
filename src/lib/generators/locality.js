@@ -64,7 +64,9 @@ storygen.mergeGrammar({
 });
 
 export default function (seed) {
+  storygen.memory = {};
   seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
+  storygen.run('#generate_name(true)#', seed); //reset the language generator to the current seed.
   storygen.run('#locality_memory#', seed);
 
   const locality = {

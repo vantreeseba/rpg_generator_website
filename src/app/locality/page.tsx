@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -8,9 +7,10 @@ import { Label } from '@/components/ui/label';
 import Section from '@/components/section';
 
 import locality_generator from '../../lib/generators/locality.js';
+import { useUrlSeed } from '@/hooks/useUrlSeed';
 
 export default function Locality() {
-  const [seed, setSeed] = useState<number>(0);
+  const [seed, setSeed] = useUrlSeed();
 
   const localitys = [];
   for (var i = 0; i < 4; i++) {

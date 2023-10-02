@@ -86,8 +86,9 @@ Clothes: #npc_clothes#
 });
 
 export default function (memory, seed) {
-  seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
   storygen.memory = {};
+  seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
+  storygen.run('#generate_name(true)#', seed); //reset the language generator to the current seed.
 
   for (let key in memory) {
     let memoryKey = key + '_';

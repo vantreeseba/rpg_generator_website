@@ -85,6 +85,8 @@ They are often worshipped by #occupations.s# and #occupations.s#.
 export default function (seed) {
   storygen.memory = {};
   seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
+  storygen.run('#generate_name(true)#', seed); //reset the language generator to the current seed.
+
   storygen.run('#deity_memory#', seed);
 
   const deity = {

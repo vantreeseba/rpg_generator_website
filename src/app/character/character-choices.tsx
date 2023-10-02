@@ -27,6 +27,7 @@ export default function CharacterChoices<T>({ value, onValueChange }: ChoicesPro
     for (let key in data) {
       mapped[key] = (
         <Choice
+          key={`character_choice_${key}`}
           title={key}
           choices={data[key]}
           onValueChange={(val) => onValueChange({ ...value, [key]: val })}
@@ -58,7 +59,11 @@ interface ChoiceProps {
 }
 
 function Choice({ choices, title, value, onValueChange }: ChoiceProps) {
-  var items = choices.map((choice) => <SelectItem value={choice}>{choice}</SelectItem>);
+  var items = choices.map((choice, i) => (
+    <SelectItem key={i} value={choice}>
+      {choice}
+    </SelectItem>
+  ));
 
   return (
     <div className="w-60">

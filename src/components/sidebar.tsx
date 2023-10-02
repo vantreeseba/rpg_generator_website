@@ -34,7 +34,7 @@ function SidebarSection({ title, links = [] }: SidebarSectionProps) {
         key={`sidebar_section_link_${link.path}`}
         variant={isCurrent ? 'outline' : 'ghost'}
         className="w-full justify-start"
-        onClick={() => router.replace(link.path)}
+        onClick={() => router.push(link.path)}
       >
         {link.label}
       </Button>

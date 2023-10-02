@@ -9,31 +9,30 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 
+import { useUrlSeed } from '@/hooks/useUrlSeed';
+
 type Character = {
   species?: string;
   gender?: string;
 };
 
 export default function NPC() {
-  const [seed, setSeed] = useState<number>(0);
+  const [seed, setSeed] = useUrlSeed();
   const [value, setValue] = useState<Character>({});
 
   let character = npc_generator(value, seed);
 
   return (
     <div>
-      <div className="mt-4">
+      <div>
         <div className="flex w-full max-w-sm items-end space-x-2">
           <div>
             <Label htmlFor={'seed'}>seed</Label>
-            <Input
-              type="number"
-              value={seed}
-              onChange={(ev) => setSeed(parseInt(ev.target.value))}
-            />
+            <Input type="number" value={seed} onChange={(ev) => setSeed(ev.target.value)} />
           </div>
-          <Button onClick={() => setSeed(Math.floor(Math.random() * 1000000))}>Randomize</Button>
+          <Button onClick={() => setSeed(Math.floor(Math.random() * 1_000_000))}>Randomize</Button>
         </div>
+
         <CharacterChoices value={value} onValueChange={setValue} />
       </div>
       <div className="mt-4">

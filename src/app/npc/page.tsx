@@ -8,13 +8,14 @@ import { Label } from '@/components/ui/label';
 import Section from '@/components/section';
 
 import npc_generator from '../../lib/generators/npc.js';
+import { useUrlSeed } from '@/hooks/useUrlSeed';
 
 export default function NPC() {
-  const [seed, setSeed] = useState<number>(0);
+  const [seed, setSeed] = useUrlSeed();
 
   const npcs = [];
   for (var i = 0; i < 6; i++) {
-    npcs.push(npc_generator(seed + i));
+    npcs.push(npc_generator(null, seed + i));
   }
 
   return (
