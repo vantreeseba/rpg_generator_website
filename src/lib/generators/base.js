@@ -1,20 +1,40 @@
 const { Language } = require('@dropecho/langgen');
 const { Generator, Functions, Transforms } = require('@dropecho/storygen');
 
-var lang = new Language(null);
+var langs = {};
 
 Functions.set('generate_name', (generator, args) => {
-  if (args[0] == 'true') {
-    lang = new Language(null, generator.getSeed());
+  const seed = generator.getSeed().toString();
+  if (!langs[seed]) {
+    langs[seed] = new Language(null, seed.toString());
   }
-  return lang.createWord(null, 2, 4);
+  if (args[0] == 'true') {
+    langs[seed].random.setStringSeed(seed.toString());
+  }
+  const word = langs[seed].createWord(null, 2, 4);
+  return word;
 });
 
 Functions.set('generate_phrase', (generator, args) => {
-  if (args[0] == 'true') {
-    lang = new Language(null, generator.getSeed());
+  const seed = generator.getSeed();
+  if (!langs[seed]) {
+    langs[seed] = new Language(null, seed);
   }
-  return lang.createPhrase();
+  return langs[seed].createPhrase();
+});
+
+Functions.set('sub', (generator, args) => {
+  const sub = buildGenerator();
+  const grammar = args[0];
+  const seed = (
+    args[1] !== null && args[1] !== undefined ? generator?.memory[args[1]] || -1 : -1
+  ).toString();
+
+  const memory = grammar + '_memory';
+  if (sub.grammars[memory]) {
+    sub.run(memory, seed);
+  }
+  return sub.run(`#${grammar}#`, seed);
 });
 
 Functions.set('pick', (generator, args) => {
@@ -145,53 +165,52 @@ Transforms.set('niceCount', (string) => {
   return int;
 });
 
-var gen = new Generator({});
-gen.mergeGrammar(require('../data/common/colors.json'));
-gen.mergeGrammar(require('../data/common/materials.json'));
+function buildGenerator() {
+  var gen = new Generator({});
+  gen.mergeGrammar(require('../data/common/colors.json'));
+  gen.mergeGrammar(require('../data/common/materials.json'));
 
-gen.mergeGrammar(require('../data/animals.json'));
-gen.mergeGrammar(require('../data/foods.json'));
-gen.mergeGrammar(require('../data/occupations.json'));
-gen.mergeGrammar(require('../data/locations.json'));
-gen.mergeGrammar(require('../data/symbols.json'));
+  gen.mergeGrammar(require('../data/animals.json'));
+  gen.mergeGrammar(require('../data/foods.json'));
+  gen.mergeGrammar(require('../data/occupations.json'));
+  gen.mergeGrammar(require('../data/locations.json'));
+  gen.mergeGrammar(require('../data/symbols.json'));
 
-gen.mergeGrammar(require('../data/items/clothing.json'));
-gen.mergeGrammar(require('../data/items/trinkets.json'));
-gen.mergeGrammar(require('../data/items/weapons.json'));
+  gen.mergeGrammar(require('../data/items/clothing.json'));
+  gen.mergeGrammar(require('../data/items/trinkets.json'));
+  gen.mergeGrammar(require('../data/items/weapons.json'));
 
-gen.mergeGrammar(require('../data/character/species.json'));
-gen.mergeGrammar(require('../data/character/body-parts.json'));
-gen.mergeGrammar(require('../data/character/characteristics.json'));
-gen.mergeGrammar(require('../data/character/goals.json'));
-gen.mergeGrammar(require('../data/character/talents.json'));
-gen.mergeGrammar(require('../data/character/traits.json'));
-gen.mergeGrammar(require('../data/character/hair.json'));
-gen.mergeGrammar(require('../data/character/identity.json'));
+  gen.mergeGrammar(require('../data/character/species.json'));
+  gen.mergeGrammar(require('../data/character/body-parts.json'));
+  gen.mergeGrammar(require('../data/character/characteristics.json'));
+  gen.mergeGrammar(require('../data/character/goals.json'));
+  gen.mergeGrammar(require('../data/character/talents.json'));
+  gen.mergeGrammar(require('../data/character/traits.json'));
+  gen.mergeGrammar(require('../data/character/hair.json'));
+  gen.mergeGrammar(require('../data/character/identity.json'));
 
-gen.mergeGrammar(require('../data/deity/aspects.json'));
+  gen.mergeGrammar(require('../data/deity/aspects.json'));
 
-gen.mergeGrammar(require('../data/generators/plothooks.json'));
-gen.mergeGrammar(require('../data/generators/npc.json'));
+  gen.mergeGrammar(require('../data/generators/plothooks.json'));
+  gen.mergeGrammar(require('../data/generators/npc.json'));
 
-// let window = this || null;
-// console.log('what', window);
-// if (window) {
-//   window.localStorage.setItem(
-//     'dropecho_generator_overrides',
-//     JSON.stringify({
-//       species: ['brad'],
-//     }),
-//   );
-//
-//   try {
-//     var json = window.localStorage.getItem('dropecho_generator_overrides');
-//     gen.mergeGrammar(JSON.parse(json));
-//   } catch (err) {
-//     console.log('no or invalid grammar found in local storage');
-//   }
-// }
+  gen.mergeGrammar({
+    locality_name: ['#generate_name(true).c#'],
+    locality_npc: ['#generate_name().c#, #gender.a# #species.c#'],
+    locality_leader_count: ['one', 'many'],
+    locality_short_memory: [
+      '#[M_locality_name_:locality_name]# #[leader_count:locality_leader_count]# #population:random(10, 10000)#',
+    ],
+    locality_short: [
+      '#location_type_populated.c# of #M_locality_name_#',
+      '#M_locality_name_# #location_type_populated.c#',
+    ],
+  });
+
+  return gen;
+}
 
 module.exports = {
-  storygen: gen,
-  langgen: lang,
+  storygen: buildGenerator(),
+  //   langgen: lang,
 };

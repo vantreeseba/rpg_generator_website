@@ -33,7 +33,7 @@ storygen.mergeGrammar({
   multi_leader_government_types,
   leader_type,
 
-  locality_name: ['#generate_name().c#'],
+  locality_name: ['#generate_name(true).c#'],
   locality_npc: ['#generate_name().c#, #gender.a# #species.c#'],
   locality_memory: [
     '#[name_:locality_name]# #[leader_count:locality_leader_count]# #population:random(10, 10000)#',

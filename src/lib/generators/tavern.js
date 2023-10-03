@@ -69,7 +69,7 @@ storygen.mergeGrammar({
   back_buildings: ['stable', 'mill', 'hot spring', 'brewery'],
   tavern_name: [
     'The #choice(symbol_adjectives, simple_colors)# #choice(animals, symbols, glass_type, mug_type)#',
-//     'The #choice(symbol_adjectives, simple_colors)# #choice(animals, symbols, glass_type, mug_type)# #type_:tavern_type#',
+    //     'The #choice(symbol_adjectives, simple_colors)# #choice(animals, symbols, glass_type, mug_type)# #type_:tavern_type#',
     'The #choice(animals, species, symbols, glass_type, mug_type)# and the #choice(animals, species, symbols, glass_type, mug_type)#',
     'The #species# song',
   ],
@@ -77,7 +77,9 @@ storygen.mergeGrammar({
   wall_types: ['log', 'stone', 'brick', 'wattle and daub', 'stucco', 'timber', 'masonary'],
   positive_descriptors_windows: ['welcoming', 'bright', 'open'],
   tavern_memory: [`#[name_:tavern_name]# #[smell_food_:foods]#`],
-  tavern_short: [`#type_:tavern_type.a#, located in the #location_:location_populated_named#.`],
+  //   tavern_short: [`#type_:tavern_type.a#, located in the #location_:location_populated_named#.`],
+  tavern_short: [`#type_:tavern_type.a#, located in the #sub(locality_short, location_seed_)#.`],
+
   tavern_owner_verb: ['run by', 'owned by', 'cared for by', 'managed by'],
   tavern_owner: [
     `It is #tavern_owner_verb# #generate_name(true).c# the #species#.`,
@@ -131,5 +133,3 @@ export default function (memory, seed) {
   storygen.memory = {};
   return tavern;
 }
-
-// console.log(storygen.run("#tavern#").trimStart());

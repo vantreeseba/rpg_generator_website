@@ -28,26 +28,26 @@ export default function Locality() {
             id="seed"
             type="number"
             value={seed}
-            onChange={(ev) => setSeed(parseInt(ev.target.value))}
+            onChange={(ev) => setSeed(parseInt(ev.target.value) || 0)}
           />
         </div>
         <Button onClick={() => setSeed(randomInt(1_000_000))}>Randomize</Button>
       </div>
-      <LocalityCard locality={locality} className="mt-4" />
+      <LocalityCard locality={locality} seed={seed} className="mt-4" />
     </div>
   );
 }
 
 type LocalityCardProps = {
   locality: any;
+  seed: number;
   className: string;
 };
 
-function LocalityCard({ locality, ...props }: LocalityCardProps) {
+function LocalityCard({ locality, seed, ...props }: LocalityCardProps) {
   let taverns = [];
   for (let i = 0; i < 3; i++) {
-    const seed = stringToSeed(locality.short + i);
-    const tavern = tavern_generator({ location_: locality.short }, seed);
+    const tavern = tavern_generator({ location_seed_: seed }, seed + i);
     taverns.push({ ...tavern, label: tavern.name_ });
   }
 

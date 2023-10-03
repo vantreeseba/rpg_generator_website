@@ -31,7 +31,7 @@ export default function Tavern() {
           <Input
             type="number"
             value={urlState.seed}
-            onChange={(ev) => setSeed(parseInt(ev.target.value))}
+            onChange={(ev) => setSeed(parseInt(ev.target.value) || 0)}
           />
         </div>
         <Button onClick={() => setSeed(Math.floor(Math.random() * 1_000_000))}>Randomize</Button>
