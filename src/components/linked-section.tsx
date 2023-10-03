@@ -12,9 +12,10 @@ type LinkedEntity = {
 type LinkedSectionProps = {
   entities: Array<LinkedEntity>;
   label: string;
+  path: string;
 };
 
-export default function LinkedSection({ entities, label }: LinkedSectionProps) {
+export default function LinkedSection({ entities, label, path }: LinkedSectionProps) {
   if (entities.length == 0) {
     return null;
   }
@@ -22,7 +23,7 @@ export default function LinkedSection({ entities, label }: LinkedSectionProps) {
   const value = entities.map((x, i) => (
     <div key={i}>
       <Link
-        href={`/character?${buildParamsFromObject(x.memory)}`}
+        href={`/${path}?${buildParamsFromObject(x.memory)}`}
         className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
       >
         {x.label}

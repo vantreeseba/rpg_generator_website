@@ -13,18 +13,26 @@ import { useUrlSeed } from '@/hooks/useUrlSeed';
 import tavern_generator from '../../lib/generators/tavern.js';
 import npc_generator from '../../lib/generators/npc.js';
 import { stringToSeed } from '@/lib/utils';
+import { useUrlState } from '@/hooks/useUrlState';
 
 export default function Tavern() {
-  const [seed, setSeed] = useUrlSeed();
+  const [urlState, setUrlState] = useUrlState<any>();
+  const setSeed = (seed: number) => setUrlState({ seed });
 
-  const tavern = tavern_generator(seed);
+  console.log('urlState', urlState);
+
+  const tavern = tavern_generator(urlState, urlState.seed);
 
   return (
     <div>
       <div className="flex w-full max-w-sm items-end space-x-2">
         <div>
           <Label htmlFor={'seed'}>seed</Label>
-          <Input type="number" value={seed} onChange={(ev) => setSeed(ev.target.value)} />
+          <Input
+            type="number"
+            value={urlState.seed}
+            onChange={(ev) => setSeed(parseInt(ev.target.value))}
+          />
         </div>
         <Button onClick={() => setSeed(Math.floor(Math.random() * 1_000_000))}>Randomize</Button>
       </div>
@@ -48,7 +56,7 @@ function TavernCard({ tavern }: any) {
       </CardHeader>
       <CardContent>
         <EntitySection entity={tavern} section="description" />
-        <LinkedSection entities={[owner]} label="owner" />
+        <LinkedSection entities={[owner]} path="character" label="owner" />
         <EntitySection entity={tavern} section="menu" />
         <EntitySection entity={tavern} section="rumors" />
       </CardContent>

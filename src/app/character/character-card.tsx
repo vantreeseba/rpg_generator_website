@@ -30,8 +30,8 @@ export default function CharacterCard({ character }: any) {
       <CardContent>
         <EntitySection entity={character} section="history" />
         <EntitySection entity={character} section="clothes" />
-        <LinkedSection entities={parents} label="parents/guardians" />
-        <LinkedSection entities={siblings} label="siblings" />
+        <LinkedSection entities={parents} path="character" label="parents/guardians" />
+        <LinkedSection entities={siblings} path="character" label="siblings" />
         <EntitySection entity={character} section="likes" />
         <EntitySection entity={character} section="traits" />
         <EntitySection entity={character} section="goals" />

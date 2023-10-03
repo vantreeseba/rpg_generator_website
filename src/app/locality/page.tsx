@@ -5,10 +5,14 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import EntitySection from '@/components/entity-section';
+import LinkedSection from '@/components/linked-section';
+
+import { useUrlSeed } from '@/hooks/useUrlSeed';
+import { randomInt, stringToSeed } from '@/lib/utils';
 
 import locality_generator from '../../lib/generators/locality.js';
-import { useUrlSeed } from '@/hooks/useUrlSeed';
-import { randomInt } from '@/lib/utils';
+import tavern_generator from '../../lib/generators/tavern.js';
+import { ta } from 'date-fns/locale';
 
 export default function Locality() {
   const [seed, setSeed] = useUrlSeed();
@@ -40,6 +44,13 @@ type LocalityCardProps = {
 };
 
 function LocalityCard({ locality, ...props }: LocalityCardProps) {
+  let taverns = [];
+  for (let i = 0; i < 3; i++) {
+    const seed = stringToSeed(locality.short + i);
+    const tavern = tavern_generator({ location_: locality.short }, seed);
+    taverns.push({ ...tavern, label: tavern.name_ });
+  }
+
   return (
     <Card {...props}>
       <CardHeader>
@@ -51,6 +62,8 @@ function LocalityCard({ locality, ...props }: LocalityCardProps) {
         <EntitySection entity={locality} section="government" />
         <EntitySection entity={locality} section="leaders" />
         <EntitySection entity={locality} section="workers" />
+
+        <LinkedSection entities={taverns} label="taverns" path="tavern" />
       </CardContent>
     </Card>
   );

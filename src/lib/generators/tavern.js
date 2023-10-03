@@ -69,7 +69,7 @@ storygen.mergeGrammar({
   back_buildings: ['stable', 'mill', 'hot spring', 'brewery'],
   tavern_name: [
     'The #choice(symbol_adjectives, simple_colors)# #choice(animals, symbols, glass_type, mug_type)#',
-    'The #choice(symbol_adjectives, simple_colors)# #choice(animals, symbols, glass_type, mug_type)# #type_:tavern_type#',
+//     'The #choice(symbol_adjectives, simple_colors)# #choice(animals, symbols, glass_type, mug_type)# #type_:tavern_type#',
     'The #choice(animals, species, symbols, glass_type, mug_type)# and the #choice(animals, species, symbols, glass_type, mug_type)#',
     'The #species# song',
   ],
@@ -77,7 +77,7 @@ storygen.mergeGrammar({
   wall_types: ['log', 'stone', 'brick', 'wattle and daub', 'stucco', 'timber', 'masonary'],
   positive_descriptors_windows: ['welcoming', 'bright', 'open'],
   tavern_memory: [`#[name_:tavern_name]# #[smell_food_:foods]#`],
-  tavern_short: [`#name_# is #type_:tavern_type.a#, located in the #location_populated_named#.`],
+  tavern_short: [`#type_:tavern_type.a#, located in the #location_:location_populated_named#.`],
   tavern_owner_verb: ['run by', 'owned by', 'cared for by', 'managed by'],
   tavern_owner: [
     `It is #tavern_owner_verb# #generate_name(true).c# the #species#.`,
@@ -105,15 +105,22 @@ Serving of #foods#
   tavern_rumors: [`#repeatDelim(rumors,2,3,n)#`],
 });
 
-export default function (seed) {
+export default function (memory, seed) {
   storygen.memory = {};
   seed = (seed === undefined ? randomInt(1_000_000) : seed).toString();
   storygen.run('#generate_name(true)#', seed); //reset the language generator to the current seed.
 
+  for (let key in memory) {
+    storygen.memory[key] = memory[key];
+  }
   storygen.run('#tavern_memory#', seed);
 
   const tavern = {
     ...storygen.memory,
+    memory: {
+      seed,
+      ...storygen.memory,
+    },
     name: storygen.run('#name_.t#', seed).trimStart().trimEnd(),
     short: storygen.run('#tavern_short#', seed).trimStart().trimEnd(),
     description: storygen.run('#tavern_description#', seed).trimStart().trimEnd(),
