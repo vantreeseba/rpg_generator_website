@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import Section from '@/components/section';
+import EntitySection from '@/components/entity-section';
 
 import deity_generator from '../../lib/generators/god.js';
 import { useUrlSeed } from '@/hooks/useUrlSeed';
@@ -12,12 +12,7 @@ import { useUrlSeed } from '@/hooks/useUrlSeed';
 export default function deity() {
   const [seed, setSeed] = useUrlSeed();
 
-  let deities = [];
-  for (var i = 0; i < 6; i++) {
-    deities.push(deity_generator(seed + i));
-  }
-
-  deities = deities.filter((x) => x.name_);
+  let deity = deity_generator(seed);
 
   return (
     <div>
@@ -28,25 +23,23 @@ export default function deity() {
         </div>
         <Button onClick={() => setSeed(Math.floor(Math.random() * 1000000))}>Randomize</Button>
       </div>
-      <div className="grid gap-4 mt-4 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3">
-        {deities.map(todeityCard)}
-      </div>
+      <DeityCard deity={deity} className="mt-5" />
     </div>
   );
 }
 
-function todeityCard(deity: any, index: number) {
+function DeityCard({ deity, ...props }: any) {
   return (
-    <Card key={`deity_${deity.name_}_${index}`}>
+    <Card {...props}>
       <CardHeader>
         <CardTitle>{deity.name_}</CardTitle>
         <CardDescription>{deity.short}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Section entity={deity} section="appearance" />
-        <Section entity={deity} section="planar_home" />
-        <Section entity={deity} section="followers" />
-        <Section entity={deity} section="worshippers" />
+        <EntitySection entity={deity} section="appearance" />
+        <EntitySection entity={deity} section="planar_home" />
+        <EntitySection entity={deity} section="followers" />
+        <EntitySection entity={deity} section="worshippers" />
       </CardContent>
     </Card>
   );

@@ -69,6 +69,8 @@ storygen.mergeGrammar({
   deity_planar_home: [`Their divine home, the #location_named#, is on the #plane_location#.`],
   deity_followers: [`Their most dedicated followers are the "#order_name.titlize#".`],
   deity_worshippers: [`They are often worshipped by #occupations.s# and #occupations.s#.`],
+  deity_offerings: [`They love offerings of blah.`],
+  deity_worship: [`#deity_followers#\n#deity_offerings#`],
   deity: [
     `
 They appear as #gender_.a# #species_# with #hair-style# #colors# hair and #colors# eyes.
@@ -93,11 +95,10 @@ export default function (seed) {
     seed,
     ...storygen.memory,
     short: storygen.run('#deity_short#').trimStart().trimEnd(),
-    //     description: storygen.run('#deity#').trimStart().trimEnd(),
     planar_home: storygen.run('#deity_planar_home#').trimStart().trimEnd(),
     appearance: storygen.run('#deity_appearance#').trimStart().trimEnd(),
     followers: storygen.run('#deity_followers#').trimStart().trimEnd(),
-    worshippers: storygen.run('#deity_worshippers#').trimStart().trimEnd(),
+    worshippers: storygen.run('#deity_worship#').trimStart().trimEnd(),
   };
 
   storygen.memory = {};

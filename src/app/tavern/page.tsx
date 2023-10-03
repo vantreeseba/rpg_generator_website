@@ -4,18 +4,20 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import Section from '@/components/section';
+import EntitySection from '@/components/entity-section';
+
+import LinkedSection from '@/components/linked-section';
 
 import { useUrlSeed } from '@/hooks/useUrlSeed';
+
 import tavern_generator from '../../lib/generators/tavern.js';
+import npc_generator from '../../lib/generators/npc.js';
+import { stringToSeed } from '@/lib/utils';
 
 export default function Tavern() {
   const [seed, setSeed] = useUrlSeed();
 
-  const taverns = [];
-  for (var i = 0; i < 6; i++) {
-    taverns.push(tavern_generator(seed + i));
-  }
+  const tavern = tavern_generator(seed);
 
   return (
     <div>
@@ -27,25 +29,28 @@ export default function Tavern() {
         <Button onClick={() => setSeed(Math.floor(Math.random() * 1_000_000))}>Randomize</Button>
       </div>
 
-      <div className="grid gap-4 mt-4 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3">
-        {taverns.map(toTavernCard)}
+      <div className="mt-4">
+        <TavernCard tavern={tavern} />
       </div>
     </div>
   );
 }
 
-function toTavernCard(tavern: any, index: number) {
+function TavernCard({ tavern }: any) {
+  let owner = npc_generator({}, stringToSeed(tavern.name_));
+  owner = { ...owner, label: owner.name_ };
+
   return (
-    <Card key={`tavern_${index}`}>
+    <Card>
       <CardHeader>
         <CardTitle>{tavern.name}</CardTitle>
         <CardDescription>{tavern.short}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Section entity={tavern} section="description" />
-        <Section entity={tavern} section="owner" />
-        <Section entity={tavern} section="menu" />
-        <Section entity={tavern} section="rumors" />
+        <EntitySection entity={tavern} section="description" />
+        <LinkedSection entities={[owner]} label="owner" />
+        <EntitySection entity={tavern} section="menu" />
+        <EntitySection entity={tavern} section="rumors" />
       </CardContent>
     </Card>
   );

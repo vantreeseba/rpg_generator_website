@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import Section from '@/components/section';
+import EntitySection from '@/components/entity-section';
 
 import trinket_generator from '../../lib/generators/trinket.js';
 import { useUrlSeed } from '@/hooks/useUrlSeed';
@@ -43,7 +43,7 @@ function toTrinketCard(trinket: any, index: number) {
         <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <Section entity={trinket} section="short" />
+        <EntitySection entity={trinket} section="short" />
       </CardContent>
     </Card>
   );

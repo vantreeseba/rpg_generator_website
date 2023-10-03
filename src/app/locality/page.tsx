@@ -4,48 +4,53 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import Section from '@/components/section';
+import EntitySection from '@/components/entity-section';
 
 import locality_generator from '../../lib/generators/locality.js';
 import { useUrlSeed } from '@/hooks/useUrlSeed';
+import { randomInt } from '@/lib/utils';
 
 export default function Locality() {
   const [seed, setSeed] = useUrlSeed();
 
-  const localitys = [];
-  for (var i = 0; i < 4; i++) {
-    localitys.push(locality_generator(seed + i));
-  }
+  const locality = locality_generator(seed);
 
   return (
     <div>
       <div className="flex w-full max-w-sm items-end space-x-2">
         <div>
           <Label htmlFor={'seed'}>seed</Label>
-          <Input type="number" value={seed} onChange={(ev) => setSeed(parseInt(ev.target.value))} />
+          <Input
+            id="seed"
+            type="number"
+            value={seed}
+            onChange={(ev) => setSeed(parseInt(ev.target.value))}
+          />
         </div>
-        <Button onClick={() => setSeed(Math.floor(Math.random() * 1000000))}>Randomize</Button>
+        <Button onClick={() => setSeed(randomInt(1_000_000))}>Randomize</Button>
       </div>
-
-      <div className="grid gap-4 mt-4 sm:grid-cols-1 md:grid-cols-2 2xl:grid-cols-3">
-        {localitys.map(toLocalityCard)}
-      </div>
+      <LocalityCard locality={locality} className="mt-4" />
     </div>
   );
 }
 
-function toLocalityCard(locality: any, index: number) {
+type LocalityCardProps = {
+  locality: any;
+  className: string;
+};
+
+function LocalityCard({ locality, ...props }: LocalityCardProps) {
   return (
-    <Card key={index}>
+    <Card {...props}>
       <CardHeader>
         <CardTitle>{locality.short}</CardTitle>
         <CardDescription>{locality.short}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Section entity={locality} section="population" />
-        <Section entity={locality} section="government" />
-        <Section entity={locality} section="leaders" />
-        <Section entity={locality} section="workers" />
+        <EntitySection entity={locality} section="population" />
+        <EntitySection entity={locality} section="government" />
+        <EntitySection entity={locality} section="leaders" />
+        <EntitySection entity={locality} section="workers" />
       </CardContent>
     </Card>
   );

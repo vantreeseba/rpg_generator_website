@@ -1,4 +1,5 @@
-const { storygen } = require('./base');
+import { storygen } from './base';
+import { randomInt } from '../utils';
 
 const government_types = [
   'democracy',
@@ -32,7 +33,7 @@ storygen.mergeGrammar({
   multi_leader_government_types,
   leader_type,
 
-  locality_name: ['#generate_name(true).c#'],
+  locality_name: ['#generate_name().c#'],
   locality_npc: ['#generate_name().c#, #gender.a# #species.c#'],
   locality_memory: [
     '#[name_:locality_name]# #[leader_count:locality_leader_count]# #population:random(10, 10000)#',
@@ -65,8 +66,9 @@ storygen.mergeGrammar({
 
 export default function (seed) {
   storygen.memory = {};
-  seed = seed === undefined ? Math.floor(Math.random() * 100000) : seed;
+  seed = (seed === undefined ? randomInt(1_000_000) : seed).toString();
   storygen.run('#generate_name(true)#', seed); //reset the language generator to the current seed.
+
   storygen.run('#locality_memory#', seed);
 
   const locality = {
@@ -75,13 +77,7 @@ export default function (seed) {
     government: storygen.run('#locality_government#', seed).trimStart().trimEnd(),
     leaders: storygen.run('#locality_leaders#', seed).trimStart().trimEnd(),
     workers: storygen.run('#locality_workers#', seed).trimStart().trimEnd(),
-    //     short: storygen.run('#locality_short#', seed).trimStart().trimEnd(),
-    //     owner: storygen.run('#locality_owner#', seed).trimStart().trimEnd(),
-    //     menu: storygen.run('#locality_menu#', seed).trimStart().trimEnd(),
-    //     rumors: storygen.run('#locality_rumors#', seed).trimStart().trimEnd(),
   };
   storygen.memory = {};
   return locality;
 }
-
-// console.log(storygen.run("#locality#").trimStart());

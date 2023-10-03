@@ -99,6 +99,7 @@ export default function (memory, seed) {
 
   const npc = {
     ...storygen.memory,
+    memory: { ...storygen.memory, seed },
     short: storygen.run('#npc_short#', seed).trimStart().trimEnd(),
     clothes: storygen.run('#npc_clothes#', seed).trimStart().trimEnd(),
     history: storygen.run('#npc_history#', seed).trimStart().trimEnd(),

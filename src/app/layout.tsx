@@ -29,10 +29,6 @@ const sections = [
         path: '/character?seed=0',
       },
       {
-        label: 'npc',
-        path: '/npc?seed=0',
-      },
-      {
         label: 'deity',
         path: '/deity?seed=0',
       },
@@ -68,7 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={className}>
         <Sidebar sections={sections} />
-        {children}
+        <div className="mr-5">{children}</div>
       </body>
     </html>
   );
