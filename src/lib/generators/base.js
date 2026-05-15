@@ -240,6 +240,20 @@ function buildGenerator() {
   gen.mergeGrammar(plothooksData);
   gen.mergeGrammar(npcData);
 
+  // Shared pronoun/verb grammar — defined once here so generator load order never matters.
+  gen.mergeGrammar({
+    is_was: ['is', 'was'],
+    he: ['he'],
+    she: ['she'],
+    they: ['they'],
+    is: ['is'],
+    are: ['are'],
+    pronoun: ['#switch(gender_, male=>he, female=>she, _=>they)#'],
+    is_verb: ['#switch(pronoun_, he=>is, she=>is, it=>is, _=>are)#'],
+    poss_pronoun: ['#switch(pronoun_, he=>his, she=>her, it=>its, _=>their)#'],
+    reflex_pronoun: ['#switch(pronoun_, he=>himself, she=>herself, it=>itself, _=>themselves)#'],
+  });
+
   gen.mergeGrammar({
     locality_name: ['#generate_name(true).c#'],
     locality_npc: ['#generate_name().c#, #gender.a# #species.c#'],

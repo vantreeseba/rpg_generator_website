@@ -8,14 +8,6 @@ import { storygen } from './base.js';
 // flaws
 
 storygen.mergeGrammar({
-  is_was: ['is', 'was'],
-  he: ['he'],
-  she: ['she'],
-  they: ['they'],
-  is: ['is'],
-  are: ['are'],
-  pronoun: ['#switch(_gender_, male=>he, female=>she, _=>they)#'],
-  is_verb: ['#switch(_pronoun_, he=>is, she=>is, they=>are)#'],
   order_name_type: [
     'order',
     'knights',
