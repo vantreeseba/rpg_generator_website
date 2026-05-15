@@ -1,36 +1,19 @@
-'use client';
+import { useNavigate, useSearch } from '@tanstack/react-router';
 
-import {
-  ReadonlyURLSearchParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from 'next/navigation.js';
+export function useUrlState<T extends object>(): [T, (state: Partial<T>) => void] {
+  const search = useSearch({ strict: false } as any) as T;
+  const navigate = useNavigate();
 
-export function useUrlState<T extends object>(): [T, (state: T) => void] {
-  const path = usePathname();
-  const searchParams = useSearchParams();
-  const router = useRouter();
+  const setState = (state: Partial<T>) =>
+    navigate({ to: '.', search: (prev: any) => ({ ...prev, ...state }) });
 
-  const params = Object.fromEntries(searchParams.entries()) as T;
-
-  return [
-    params,
-    (state: T) => {
-      const params = new URLSearchParams(searchParams);
-      for (let [key, value] of Object.entries(state)) {
-        params.set(key, value.toString());
-      }
-      router.replace(`${path}?${params.toString()}`);
-    },
-  ];
+  return [search, setState];
 }
 
-export function buildParamsFromObject(newParams: object) {
-  const params = new URLSearchParams();
-  for (let [key, value] of Object.entries(newParams)) {
-    params.set(key, value.toString());
+export function buildParamsFromObject(params: object): string {
+  const urlParams = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) {
+    if (value != null) urlParams.set(key, String(value));
   }
-
-  return params.toString();
+  return urlParams.toString();
 }

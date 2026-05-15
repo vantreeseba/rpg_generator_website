@@ -1,5 +1,3 @@
-'use client';
-
 import npc_generator from '../../lib/generators/npc.js';
 import CharacterChoices from './character-choices';
 import { Input } from '@/components/ui/input';

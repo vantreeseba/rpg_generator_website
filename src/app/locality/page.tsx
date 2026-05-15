@@ -1,5 +1,3 @@
-'use client';
-
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -8,11 +6,10 @@ import EntitySection from '@/components/entity-section';
 import LinkedSection from '@/components/linked-section';
 
 import { useUrlSeed } from '@/hooks/useUrlSeed';
-import { randomInt, stringToSeed } from '@/lib/utils';
+import { randomInt } from '@/lib/utils';
 
 import locality_generator from '../../lib/generators/locality.js';
 import tavern_generator from '../../lib/generators/tavern.js';
-import { ta } from 'date-fns/locale';
 
 export default function Locality() {
   const [seed, setSeed] = useUrlSeed();
@@ -48,7 +45,7 @@ function LocalityCard({ locality, seed, ...props }: LocalityCardProps) {
   let taverns = [];
   for (let i = 0; i < 3; i++) {
     const tavern = tavern_generator({ location_seed_: seed }, seed + i);
-    taverns.push({ ...tavern, label: tavern.name_ });
+    taverns.push({ ...tavern, label: (tavern as any).name_ || tavern.name });
   }
 
   return (

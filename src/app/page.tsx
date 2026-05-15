@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export default function Home() {
@@ -59,11 +58,11 @@ export default function Home() {
         Contact Info
       </h2>
       <div>
-        <Button variant="ghost">
-          <Link href="http://twitter.com/vantreeseba">twitter</Link>
+        <Button variant="ghost" asChild>
+          <a href="http://twitter.com/vantreeseba">twitter</a>
         </Button>
-        <Button variant="ghost">
-          <Link href="http://vantreeseba.com">vantreeseba.com</Link>
+        <Button variant="ghost" asChild>
+          <a href="http://vantreeseba.com">vantreeseba.com</a>
         </Button>
       </div>
     </div>

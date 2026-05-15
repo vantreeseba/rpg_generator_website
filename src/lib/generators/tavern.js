@@ -1,4 +1,5 @@
-const { storygen } = require('./base');
+import { storygen } from './base.js';
+import { randomInt } from '../utils.js';
 
 // TODO:
 // trinkets

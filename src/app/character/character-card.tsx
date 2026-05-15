@@ -1,4 +1,3 @@
-'use client';
 import npc_generator from '../../lib/generators/npc.js';
 import trinket_generator from '../../lib/generators/trinket.js';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
@@ -23,13 +22,13 @@ export default function CharacterCard({ character, seed }: any) {
   // Comes from page.tsx as a clean number so string/number ambiguity can't cause issues.
   const rootSeedForLinks: number = familyRootSeed ?? seed;
 
-  let parents = [
+  let parents: any[] = [
     npc_generator(memory, familySeed),
     npc_generator(memory, familySeed + 1),
   ];
   parents = parents.map((x) => ({ ...x, label: x.name_, memory: { seed: x.memory.seed, species: x.species_ } }));
 
-  let siblings = [];
+  let siblings: any[] = [];
   for (let i = 0; i < siblingCount; i++) {
     siblings.push(npc_generator(memory, familySeed + 100 + i));
   }

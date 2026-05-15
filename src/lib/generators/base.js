@@ -1,5 +1,27 @@
-const { Language } = require('@dropecho/langgen');
-const { Generator, Functions, Transforms } = require('@dropecho/storygen');
+import { Language } from '@dropecho/langgen';
+import { Generator, Functions, Transforms } from '@dropecho/storygen';
+
+import colorsData from '../data/common/colors.json';
+import materialsData from '../data/common/materials.json';
+import animalsData from '../data/animals.json';
+import foodsData from '../data/foods.json';
+import occupationsData from '../data/occupations.json';
+import locationsData from '../data/locations.json';
+import symbolsData from '../data/symbols.json';
+import clothingData from '../data/items/clothing.json';
+import trinketsData from '../data/items/trinkets.json';
+import weaponsData from '../data/items/weapons.json';
+import speciesData from '../data/character/species.json';
+import bodyPartsData from '../data/character/body-parts.json';
+import characteristicsData from '../data/character/characteristics.json';
+import goalsData from '../data/character/goals.json';
+import talentsData from '../data/character/talents.json';
+import traitsData from '../data/character/traits.json';
+import hairData from '../data/character/hair.json';
+import identityData from '../data/character/identity.json';
+import aspectsData from '../data/deity/aspects.json';
+import plothooksData from '../data/generators/plothooks.json';
+import npcData from '../data/generators/npc.json';
 
 var langs = {};
 
@@ -191,32 +213,32 @@ Transforms.set('niceCount', (string) => {
 
 function buildGenerator() {
   var gen = new Generator({});
-  gen.mergeGrammar(require('../data/common/colors.json'));
-  gen.mergeGrammar(require('../data/common/materials.json'));
+  gen.mergeGrammar(colorsData);
+  gen.mergeGrammar(materialsData);
 
-  gen.mergeGrammar(require('../data/animals.json'));
-  gen.mergeGrammar(require('../data/foods.json'));
-  gen.mergeGrammar(require('../data/occupations.json'));
-  gen.mergeGrammar(require('../data/locations.json'));
-  gen.mergeGrammar(require('../data/symbols.json'));
+  gen.mergeGrammar(animalsData);
+  gen.mergeGrammar(foodsData);
+  gen.mergeGrammar(occupationsData);
+  gen.mergeGrammar(locationsData);
+  gen.mergeGrammar(symbolsData);
 
-  gen.mergeGrammar(require('../data/items/clothing.json'));
-  gen.mergeGrammar(require('../data/items/trinkets.json'));
-  gen.mergeGrammar(require('../data/items/weapons.json'));
+  gen.mergeGrammar(clothingData);
+  gen.mergeGrammar(trinketsData);
+  gen.mergeGrammar(weaponsData);
 
-  gen.mergeGrammar(require('../data/character/species.json'));
-  gen.mergeGrammar(require('../data/character/body-parts.json'));
-  gen.mergeGrammar(require('../data/character/characteristics.json'));
-  gen.mergeGrammar(require('../data/character/goals.json'));
-  gen.mergeGrammar(require('../data/character/talents.json'));
-  gen.mergeGrammar(require('../data/character/traits.json'));
-  gen.mergeGrammar(require('../data/character/hair.json'));
-  gen.mergeGrammar(require('../data/character/identity.json'));
+  gen.mergeGrammar(speciesData);
+  gen.mergeGrammar(bodyPartsData);
+  gen.mergeGrammar(characteristicsData);
+  gen.mergeGrammar(goalsData);
+  gen.mergeGrammar(talentsData);
+  gen.mergeGrammar(traitsData);
+  gen.mergeGrammar(hairData);
+  gen.mergeGrammar(identityData);
 
-  gen.mergeGrammar(require('../data/deity/aspects.json'));
+  gen.mergeGrammar(aspectsData);
 
-  gen.mergeGrammar(require('../data/generators/plothooks.json'));
-  gen.mergeGrammar(require('../data/generators/npc.json'));
+  gen.mergeGrammar(plothooksData);
+  gen.mergeGrammar(npcData);
 
   gen.mergeGrammar({
     locality_name: ['#generate_name(true).c#'],
@@ -234,7 +256,4 @@ function buildGenerator() {
   return gen;
 }
 
-module.exports = {
-  storygen: buildGenerator(),
-  //   langgen: lang,
-};
+export const storygen = buildGenerator();

@@ -1,14 +1,12 @@
-'use client';
+import { useNavigate, useSearch } from '@tanstack/react-router';
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation.js';
+export function useUrlSeed(): [number, (seed: number) => void] {
+  const search = useSearch({ strict: false } as any) as { seed?: string | number };
+  const navigate = useNavigate();
 
-export function useUrlSeed(): [number, Function] {
-  const path = usePathname();
-  const params = useSearchParams();
-  const router = useRouter();
+  const seed = Number(search.seed) || 0;
+  const setSeed = (seed: number) =>
+    navigate({ to: '.', search: (prev: any) => ({ ...prev, seed }) });
 
-  return [
-    parseInt(params.get('seed') || '0'),
-    (seed: string) => router.replace(`${path}?seed=${seed || 0}`),
-  ];
+  return [seed, setSeed];
 }

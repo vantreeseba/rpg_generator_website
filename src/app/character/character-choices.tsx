@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Select,
   SelectContent,
@@ -11,7 +9,6 @@ import { Label } from '@/components/ui/label';
 
 import species from '../../lib/data/character/species.json';
 import identity from '../../lib/data/character/identity.json';
-import { useState } from 'react';
 
 type Grammar = Record<string, string[]>;
 type MappedData<T extends Grammar> = Record<keyof T, any>;

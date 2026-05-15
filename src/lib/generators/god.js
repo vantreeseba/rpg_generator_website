@@ -1,4 +1,4 @@
-const { storygen } = require('./base');
+import { storygen } from './base.js';
 
 // TODO:
 // trinkets

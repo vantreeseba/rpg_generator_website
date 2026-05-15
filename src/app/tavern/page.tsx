@@ -1,5 +1,3 @@
-'use client';
-
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -45,8 +43,8 @@ export default function Tavern() {
 }
 
 function TavernCard({ tavern }: any) {
-  let owner = npc_generator({}, stringToSeed(tavern.name_));
-  owner = { ...owner, label: owner.name_ };
+  const owner: any = { ...npc_generator({}, stringToSeed(tavern.name)) };
+  owner.label = owner.name_;
 
   return (
     <Card>

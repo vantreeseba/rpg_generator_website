@@ -1,8 +1,5 @@
-'use client';
-
+import { Link, useRouterState } from '@tanstack/react-router';
 import { Button } from './ui/button';
-import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
 
 interface SidebarProps {
   sections: Array<SidebarSectionProps>;
@@ -10,7 +7,7 @@ interface SidebarProps {
 
 interface SidebarSectionProps {
   title: string;
-  links: Array<any>;
+  links: Array<{ label: string; path: string }>;
 }
 
 export default function Sidebar({ sections }: SidebarProps) {
@@ -24,20 +21,16 @@ export default function Sidebar({ sections }: SidebarProps) {
 }
 
 function SidebarSection({ title, links = [] }: SidebarSectionProps) {
-  const router = useRouter();
-  const pathname = usePathname();
+  const { location } = useRouterState();
 
   const buttons = links.map((link) => {
-    const isCurrent = link.path == pathname;
+    const isCurrent = location.pathname === link.path;
     return (
-      <Button
-        key={`sidebar_section_link_${link.path}`}
-        variant={isCurrent ? 'outline' : 'ghost'}
-        className="w-full justify-start"
-        onClick={() => router.push(link.path)}
-      >
-        {link.label}
-      </Button>
+      <Link key={`sidebar_section_link_${link.path}`} to={link.path as any}>
+        <Button variant={isCurrent ? 'outline' : 'ghost'} className="w-full justify-start">
+          {link.label}
+        </Button>
+      </Link>
     );
   });
 

@@ -1,6 +1,7 @@
-const { storygen } = require('./base');
+import { storygen } from './base.js';
+import questData from '../data/generators/quest.json';
 
-storygen.mergeGrammar(require('../data/generators/quest.json'));
+storygen.mergeGrammar(questData);
 storygen.mergeGrammar({
   quest_trinket: ['It is #trinkets.a#.'],
 

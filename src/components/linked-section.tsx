@@ -1,6 +1,5 @@
-import Link from 'next/link';
+import { Link } from '@tanstack/react-router';
 import { CollapsibleDivider } from './divider';
-import { buildParamsFromObject } from '@/hooks/useUrlState';
 
 type LinkedEntity = {
   label: string;
@@ -16,14 +15,13 @@ type LinkedSectionProps = {
 };
 
 export default function LinkedSection({ entities, label, path }: LinkedSectionProps) {
-  if (entities.length == 0) {
-    return null;
-  }
+  if (entities.length === 0) return null;
 
   const value = entities.map((x, i) => (
     <div key={i}>
       <Link
-        href={`/${path}?${buildParamsFromObject(x.memory)}`}
+        to={`/${path}` as any}
+        search={x.memory as any}
         className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
       >
         {x.label}
