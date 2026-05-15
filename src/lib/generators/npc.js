@@ -3,16 +3,6 @@ import { storygen } from './base.js';
 // TODO: background, flaws
 
 storygen.mergeGrammar({
-  is_was: ['is', 'was'],
-  he: ['he'],
-  she: ['she'],
-  they: ['they'],
-  is: ['is'],
-  are: ['are'],
-  pronoun: ['#switch(gender_, male=>he, female=>she, _=>they)#'],
-  is_verb: ['#switch(pronoun_, he=>is, she=>is, it=>is, _=>are)#'],
-  poss_pronoun: ['#switch(pronoun_, he=>his, she=>her, it=>its, _=>their)#'],
-  reflex_pronoun: ['#switch(pronoun_, he=>himself, she=>herself, it=>itself, _=>themselves)#'],
   food_reasons: ['spiciness', 'squishy texture', 'crunchy texture', 'flavor'],
   food_reason: ['because of the #food_reasons#'],
   npc_memory: [
