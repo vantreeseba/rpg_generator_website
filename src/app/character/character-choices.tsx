@@ -30,6 +30,7 @@ export default function CharacterChoices<T>({ value, onValueChange }: ChoicesPro
           key={`character_choice_${key}`}
           title={key}
           choices={data[key]}
+          value={(value as any)[key]}
           onValueChange={(val) => onValueChange({ ...value, [key]: val })}
         />
       );

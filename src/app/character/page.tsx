@@ -14,6 +14,9 @@ export type CharacterState = {
   species?: string;
   gender?: string;
   name_?: string;
+  family_seed?: number;
+  family_sibling_count?: number;
+  family_root_seed?: number;
 };
 
 export default function NPC() {
@@ -40,7 +43,7 @@ export default function NPC() {
         <CharacterChoices value={urlState} onValueChange={setUrlState} />
       </div>
       <div className="mt-4">
-        <CharacterCard character={character} />
+        <CharacterCard character={character} seed={Number(urlState.seed) || character.memory.seed} />
       </div>
     </div>
   );

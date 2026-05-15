@@ -5,7 +5,7 @@ import { buildParamsFromObject } from '@/hooks/useUrlState';
 type LinkedEntity = {
   label: string;
   short: string;
-  type: string;
+  type?: string;
   memory: object;
 };
 

@@ -127,6 +127,30 @@ Functions.set('permute', (generator, args) => {
   return generator.run(c, generator.getSeed());
 });
 
+function conjugateVerb(verb, pronoun) {
+  if (pronoun === 'he' || pronoun === 'she' || pronoun === 'it') {
+    const irregulars = { be: 'is', have: 'has', do: 'does', go: 'goes' };
+    if (irregulars[verb]) return irregulars[verb];
+    if (/(?:s|x|z|ch|sh)$/.test(verb)) return verb + 'es';
+    if (/[^aeiou]y$/.test(verb)) return verb.slice(0, -1) + 'ies';
+    return verb + 's';
+  }
+  // they / plural — base form, except 'be'
+  if (verb === 'be') return 'are';
+  return verb;
+}
+
+// Usage: #conjugate(want, pronoun_)# or #conjugate(want, he)#
+// Accepts either a pronoun directly (he/she/they) or a memory key.
+Functions.set('conjugate', (generator, args) => {
+  const verb = args[0];
+  const raw = args[1];
+  const pronoun = (raw === 'he' || raw === 'she' || raw === 'they' || raw === 'it')
+    ? raw
+    : generator.memory[raw];
+  return conjugateVerb(verb, pronoun);
+});
+
 Transforms.set('titlize', (string) => {
   return string
     .split(' ')
